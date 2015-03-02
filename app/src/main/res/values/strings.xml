@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CS492</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Restaurant Menu Reader</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="welcome">Welcome!</string>
+    <string name="title_button_begin">Begin</string>
+    <string name="change_location">Not the right location?</string>
+    <string name="click_here">Click here</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_restaurant_list">RestaurantList</string>

@@ -1,17 +1,31 @@
 package school.cs492;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
-public class RestaurantList extends ActionBarActivity {
+public class RestaurantListActivity extends ActionBarActivity {
+
+    ListView restaurantList;
+
+    String[] restaurants = {"Restaurant 1", "Restaurant 2", "Restaurant 3", "Restaurant 4"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_ist);
+
+        setContentView(R.layout.activity_restaurant_list);
+
+        restaurantList = (ListView) findViewById(R.id.restaurant_list);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, restaurants);
+
+        restaurantList.setAdapter(adapter);
     }
 
 
