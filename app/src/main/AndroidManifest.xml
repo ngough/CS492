@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="school.cs492" >
+    package="school.cs492">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ConfirmationActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +25,7 @@
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,16 +34,13 @@
         </activity>
         <activity
             android:name=".RestaurantListActivity"
-            android:label="@string/title_activity_restaurant_list" >
-        </activity>
+            android:label="@string/title_activity_restaurant_list"></activity>
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu" >
-        </activity>
+            android:label="@string/title_activity_main_menu"></activity>
         <activity
             android:name=".CameraScanActivity"
-            android:label="@string/title_activity_camera_scan" >
-        </activity>
+            android:label="@string/title_activity_camera_scan"></activity>
     </application>
 
 </manifest>

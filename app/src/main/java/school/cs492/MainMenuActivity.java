@@ -21,7 +21,7 @@ public class MainMenuActivity extends ActionBarActivity {
 
         // Get the scan button. Id id button. the other one is button2.
         // Hook it up with listener.
-        Button scanBtn = (Button)findViewById(R.id.button);
+        Button scanBtn = (Button) findViewById(R.id.button);
         scanBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 handleBtn((Button) v);
@@ -30,24 +30,22 @@ public class MainMenuActivity extends ActionBarActivity {
     }
 
     // This is the listener for the button. It calls CameraScanActivity which is a QR reader.
-    public void handleBtn(Button btn)
-    {
+    public void handleBtn(Button btn) {
         Intent intent = new Intent(this, CameraScanActivity.class);
-        startActivityForResult(intent,SCAN_REQUEST_CODE );
+        startActivityForResult(intent, SCAN_REQUEST_CODE);
     }
 
     // Get the QR Result from CameraScanActivity. It calls handleQrResult to do the actual work.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if(requestCode == SCAN_REQUEST_CODE){
+        if (requestCode == SCAN_REQUEST_CODE) {
             handleQrResult(resultCode, intent);
         }
     }
 
     // Print QR info on the textView.
-    public void handleQrResult(int resultCode, Intent intent)
-    {
-        if(resultCode==RESULT_OK){
+    public void handleQrResult(int resultCode, Intent intent) {
+        if (resultCode == RESULT_OK) {
             TextView infoView = (TextView) findViewById(R.id.infoView);
             String qrResult = intent.getStringExtra(CameraScanActivity.QR_RESULT_EXTRA);
             infoView.setText(qrResult);

@@ -10,7 +10,8 @@ import android.view.WindowManager;
  * Created by lingxi on 2/21/2015.
  */
 public class SplashActivity extends Activity {
-    private static long SLEEP_TIME=5;
+    private static long SLEEP_TIME = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +27,13 @@ public class SplashActivity extends Activity {
 
     }
 
-    private class IntentLauncher extends Thread{
+    private class IntentLauncher extends Thread {
 
-        public void run(){
-            try{
+        public void run() {
+            try {
                 //sleeping...
-                Thread.sleep(SLEEP_TIME*1000);
-            }catch(Exception e){
+                Thread.sleep(SLEEP_TIME * 1000);
+            } catch (Exception e) {
                 Log.e("Splash class", e.getMessage());
             }
 

@@ -1,0 +1,56 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <TextView
+            android:id="@+id/menu_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pager"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:text="Minestra di lenticchie"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/menu_item_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_item_title"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="30dp"
+            android:background="#F6E3CE"
+            android:elevation="5dp"
+            android:padding="10dp"
+            android:text="Ingredients
+            \n8oz uncooked lentil beans
+            \n1 cup Dei Fratelli All-purpose Italian Sauce
+            \n1 onion
+            \n2 large red potatoes
+            \n2 large cloves of garlic
+            \n6 large carrots
+            \n5 cups of water
+            \nExtra virgin olive oil
+            \n2 pepperoncini (or 1/2 tsp. red pepper flakes
+            \n4 sprigs of fresh or 1 ½ tbsp. dried parsley
+            \nBlack pepper
+            \nSalt"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/menu_item_nutritional_facts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</ScrollView>
