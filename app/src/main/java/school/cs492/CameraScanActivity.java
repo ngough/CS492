@@ -130,10 +130,12 @@ public class CameraScanActivity extends Activity {
     }
 
     public void handleButtonClick(Button btn) {
-        Intent intent = new Intent();
-        intent.putExtra(QR_RESULT_EXTRA, qrInfo);
-        setResult(RESULT_OK, intent);
-        finish();
+        Intent intent = new Intent(this, MenuItemActivity.class);
+        intent.putExtra("QR_RESULT", qrInfo);
+        startActivity(intent);
+//        intent.putExtra(QR_RESULT_EXTRA, qrInfo);
+//        setResult(RESULT_OK, intent);
+//        finish();
     }
 
     public void onPause() {

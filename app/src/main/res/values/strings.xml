@@ -11,6 +11,7 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_restaurant_list">RestaurantListActivity</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="title_activity_menu_item">MenuItemActivity</string>
     <string name="ScanBtnTxt">Start Scanning</string>
     <string name="CompBtn">Compare Menu Items</string>
     <string name="title_activity_camera_scan">CameraScanActivity</string>

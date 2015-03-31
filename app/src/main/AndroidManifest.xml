@@ -44,6 +44,9 @@
         <activity
             android:name=".CameraScanActivity"
             android:label="@string/title_activity_camera_scan"></activity>
+        <activity
+            android:name=".MenuItemActivity"
+            android:label="@string/title_activity_menu_item"></activity>
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
