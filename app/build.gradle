@@ -25,4 +25,6 @@ dependencies {
     compile 'com.google.android.gms:play-services:7.0.0'
     compile files('libs/zbar.jar')
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.viewpagerindicator:library:2.4.1@aar'
+    compile 'com.android.support:cardview-v7:21.0.+'
 }

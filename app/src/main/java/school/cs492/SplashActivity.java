@@ -2,36 +2,37 @@ package school.cs492;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
-import android.location.Location;
+
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 
 /**
  * Created by lingxi on 2/21/2015.
  * Location reading components added by Nate.
  */
 public class SplashActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener {
-    private static long SLEEP_TIME = 5;
-    private IntentLauncher launcher;
     private static final String TAG = "SplashActivity";
+    private static long SLEEP_TIME = 5;
     protected GoogleApiClient myGoogleApiClient;
     protected Location myLocation;
     protected String myLatitudeText;
     protected String myLongitudeText;
+    private IntentLauncher launcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         int available = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        Log.i(TAG, ""+available+"");
+        Log.i(TAG, "" + available + "");
 
         //Create Google API Client.
         myGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -68,7 +69,7 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
     public void onConnected(Bundle bundle) {
         myLocation = LocationServices.FusedLocationApi.getLastLocation(myGoogleApiClient);
 
-        if(myLocation != null) {
+        if (myLocation != null) {
             myLatitudeText = String.valueOf(myLocation.getLatitude());
             myLongitudeText = String.valueOf(myLocation.getLongitude());
         } //End if.
@@ -103,7 +104,7 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
             }
 
             //start main activity...
-            Intent intent = new Intent(SplashActivity.this, ConfirmationActivity.class);
+            Intent intent = new Intent(SplashActivity.this, MainMenuActivity.class);
             SplashActivity.this.startActivity(intent);
             SplashActivity.this.finish();
         } //End run() method.

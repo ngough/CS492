@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Restaurant Menu Reader</string>
-    <string name="hello_world">Hello World!</string>
-    <string name="welcome">Welcome!</string>
-    <string name="title_button_begin">Begin</string>
-    <string name="change_location">Not the right location?</string>
-    <string name="click_here">Click here</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_splash">SplashActivity</string>
-    <string name="title_activity_restaurant_list">RestaurantListActivity</string>
-    <string name="title_activity_main_menu">MainMenuActivity</string>
-    <string name="title_activity_menu_item">MenuItemActivity</string>
-    <string name="ScanBtnTxt">Start Scanning</string>
-    <string name="CompBtn">Compare Menu Items</string>
-    <string name="title_activity_camera_scan">CameraScanActivity</string>
 
+    <!-- Toolbar strings. -->
+    <string name="action_settings">Settings</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_scanned_list">Scanned Menu Items</string>
+
+    <!-- Activity strings. -->
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="title_activity_camera_scan">CameraScanActivity</string>
+    <string name="title_activity_restaurant_list">RestaurantListActivity</string>
+    <string name="title_activity_menu_item">MenuItemActivity</string>
+
+    <!-- Main Menu strings. -->
+    <string name="scan_menu_items">Scan New Menu Item</string>
+    <string name="scanned_list">Scanned Items</string>
+    <string name="change_restaurant">Change Restaurant</string>
+
+    <!-- Menu Item titles strings. -->
+    <string name="ingredients_title">Ingredients</string>
+    <string name="nutritional_facts_title">Nutritional Facts</string>
+    <string name="allergy_info_title">Allergy Information</string>
 </resources>

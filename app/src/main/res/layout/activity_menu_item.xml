@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_grey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_bar" />
+
+        <include layout="@layout/image_gallery" />
+
+        <TextView
+            android:id="@+id/menu_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/title_red"
+            android:padding="15dp"
+            android:text="Lentil Bean Soup"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="italic|bold" />
+
+        <include
+            android:id="@+id/ingredients_card"
+            layout="@layout/custom_card_view"></include>
+
+        <include
+            android:id="@+id/nutritional_facts_card"
+            layout="@layout/custom_card_view"></include>
+
+        <include
+            android:id="@+id/allergy_info_card"
+            layout="@layout/custom_card_view"></include>
+    </LinearLayout>
+</ScrollView>

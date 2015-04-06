@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 /**
- * Represents a viewPager Fragment that contains a menu item image.
+ * Represents an individual fragment that contains a picture.
+ *
+ * @author fiorfe01
  */
 public class ImageFragment extends Fragment {
 
@@ -26,11 +28,10 @@ public class ImageFragment extends Fragment {
 
         ImageView imageView = (ImageView) view.findViewById(R.id.menu_item_container);
 
-        // get the image directory
         String strtext = getArguments().getString("menu_item_url");
 
-        // set the image to the ImageView
-        Picasso.with(activity).load(strtext).fit().centerInside().into(imageView);
+        // use library to add the picture into the imageView
+        Picasso.with(activity).load(strtext).fit().centerCrop().into(imageView);
 
         return view;
     }

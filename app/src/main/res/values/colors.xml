@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="status_bar_red">#FF771D1D</color>
+    <color name="toolbar_red">#C62828</color>
+    <color name="background_grey">#D8D8D8</color>
+    <color name="title_red">#B8C62828</color>
+    <color name="pale_rust_text">#F4E2BE</color>
+</resources>
