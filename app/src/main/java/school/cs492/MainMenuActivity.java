@@ -46,7 +46,7 @@ public class MainMenuActivity extends ActionBarActivity {
 
         // set the restaurant picture TODO retrieve the picture form the server
         ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
-        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").fit().centerCrop().into(imageView);
+        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").into(imageView);
     }
 
     /**

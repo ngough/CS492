@@ -62,7 +62,6 @@ public class MenuItemActivity extends ActionBarActivity {
         setIngredientsCard();
         setNutritionalFactsCard();
         setAllergyInformationCard();
-
     }
 
     @Override

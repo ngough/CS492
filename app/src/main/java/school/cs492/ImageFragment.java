@@ -18,20 +18,26 @@ import com.squareup.picasso.Picasso;
  */
 public class ImageFragment extends Fragment {
 
+    private View view;
+
+    private ImageView imageView;
+
+    private String strtext;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Activity activity = getActivity();
 
-        View view = LayoutInflater.from(activity)
+        view = LayoutInflater.from(activity)
                 .inflate(R.layout.image_fragment, container, false);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.menu_item_container);
+        imageView = (ImageView) view.findViewById(R.id.menu_item_container);
 
-        String strtext = getArguments().getString("menu_item_url");
+        strtext = getArguments().getString("menu_item_url");
 
         // use library to add the picture into the imageView
-        Picasso.with(activity).load(strtext).fit().centerCrop().into(imageView);
+        Picasso.with(activity).load(strtext).into(imageView);
 
         return view;
     }

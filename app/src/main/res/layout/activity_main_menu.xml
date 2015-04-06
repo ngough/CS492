@@ -9,13 +9,17 @@
     <ImageView
         android:id="@+id/main_restaurant_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/restaurant_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/black"
