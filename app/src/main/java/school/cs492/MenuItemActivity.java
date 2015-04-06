@@ -24,6 +24,8 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private ViewPager viewPager;
 
+    private TextView menuItemTitle;
+
     private FragmentManager fragmentManager;
 
     private Toolbar toolbar;
@@ -51,6 +53,10 @@ public class MenuItemActivity extends ActionBarActivity {
         circleIndicator.setRadius(4 * density);
         circleIndicator.setStrokeWidth(0);
         circleIndicator.setPageColor(getResources().getColor(R.color.background_grey));
+
+        // set the menu item title TODO pass the title of the specific menu item
+        menuItemTitle = (TextView) findViewById(R.id.menu_item_title);
+        menuItemTitle.setText("Insert Menu Item Title Here");
 
         // set the menu item cards TODO pass the text data to this constructor
         setIngredientsCard();
@@ -104,7 +110,7 @@ public class MenuItemActivity extends ActionBarActivity {
         ingredientsTitle.setText(R.string.ingredients_title);
 
         // TODO use the argument to set the content text
-        ingredientsContent.setText("This is the content");
+        ingredientsContent.setText("Insert content here");
     }
 
     /**
@@ -121,7 +127,7 @@ public class MenuItemActivity extends ActionBarActivity {
         nutritionalFactsTitle.setText(R.string.nutritional_facts_title);
 
         // TODO use the argument to set the content text
-        nutritionalFactsContent.setText("This is the content");
+        nutritionalFactsContent.setText("Insert content here");
     }
 
     /**
@@ -138,7 +144,7 @@ public class MenuItemActivity extends ActionBarActivity {
         allergyInformationTitle.setText(R.string.allergy_info_title);
 
         // TODO use the argument to set the content text
-        allergyInformationContent.setText("This is the content");
+        allergyInformationContent.setText("Insert content here");
     }
 
     /**

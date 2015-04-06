@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -23,11 +24,17 @@ public class MainMenuActivity extends ActionBarActivity {
 
     private Button scanBtn;
 
+    private TextView restaurantTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        // set the restaurant title TODO pass the title of the specific restaurant
+        restaurantTitle = (TextView) findViewById(R.id.restaurant_title);
+        restaurantTitle.setText("Insert Restaurant Title Here");
 
         // set the listener for the scan button
         scanBtn = (Button) findViewById(R.id.scan_button);

@@ -22,7 +22,6 @@
             android:layout_marginBottom="20dp"
             android:background="@color/title_red"
             android:padding="15dp"
-            android:text="Lentil Bean Soup"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             android:textStyle="italic|bold" />
