@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Represents the Main Menu Activity. It displays the restaurant picture and lets the user choose to either
@@ -23,18 +26,17 @@ public class MainMenuActivity extends ActionBarActivity {
     private int SCAN_REQUEST_CODE = 1000; // Request code to scan.
 
     private Button scanBtn;
+    private Button scannedItemBtn;
 
     private TextView restaurantTitle;
+
+    private ArrayList<String> scannedQRs = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
-        // set the restaurant picture TODO retrieve the picture form the server
-        ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
-        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").into(imageView);
 
         // set the restaurant title TODO pass the title of the specific restaurant
         restaurantTitle = (TextView) findViewById(R.id.restaurant_title);
@@ -47,6 +49,18 @@ public class MainMenuActivity extends ActionBarActivity {
                 ScanButtonHandler((Button) v);
             }
         });
+
+        // set the listener for the scanned item button.
+        scannedItemBtn = (Button) findViewById(R.id.scanned_list_button);
+        scannedItemBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                scannedItemBtnHandler((Button) v);
+            }
+        });
+
+        // set the restaurant picture TODO retrieve the picture form the server
+        ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
+        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").into(imageView);
     }
 
     /**
@@ -57,7 +71,24 @@ public class MainMenuActivity extends ActionBarActivity {
     public void ScanButtonHandler(Button btn) {
 
         Intent intent = new Intent(this, CameraScanActivity.class);
+        intent.putExtra("CALLER", ActivityID.MainMenuActivity);
+        intent.putExtra("SCANNED_QR_MAIN", scannedQRs);
         startActivityForResult(intent, SCAN_REQUEST_CODE);
+    }
+
+    public void scannedItemBtnHandler(Button btn) {
+
+        if (getIntent().getStringArrayListExtra("SCANNED_QR_ITEM") != null) {
+            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_ITEM");
+            Intent intent = new Intent(this, SavedMenuItemsList.class);
+            intent.putExtra("CALLER", ActivityID.MainMenuActivity);
+            intent.putExtra("SCANNED_QR_MAIN", scannedQRs);
+            startActivity(intent);
+        } else if (scannedQRs.size() == 0) {
+            Toast.makeText(MainMenuActivity.this, "No item has been scanned!", Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     /**

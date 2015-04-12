@@ -1,5 +1,6 @@
 package school.cs492;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
+import java.util.ArrayList;
+
 /**
  * Represents the Menu Item Activity. It displays menu items pictures, ingredients, nutritional facts, and allergy information.
  *
@@ -29,6 +32,8 @@ public class MenuItemActivity extends ActionBarActivity {
     private FragmentManager fragmentManager;
 
     private Toolbar toolbar;
+
+    private ArrayList<String> scannedQRs = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +87,26 @@ public class MenuItemActivity extends ActionBarActivity {
             case R.id.action_scan:
 
                 // TODO call scan activity
+                Intent intent = new Intent(this, CameraScanActivity.class);
+                // Toss around the array list around between MenuItemActivity and CameraScanActivity.
+                intent.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent);
                 return true;
 
-            case R.id.action_settings:
+            case R.id.action_settings: // Use this to go back to main.
 
-                // open settings
+                Intent intent_main = new Intent(this, MainMenuActivity.class);
+                intent_main.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent_main.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent_main);
+                return true;
+
+            case R.id.action_scanned_list:
+                Intent intent_scanned = new Intent(this, SavedMenuItemsList.class);
+                intent_scanned.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent_scanned.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent_scanned);
                 return true;
 
             default:
@@ -175,6 +195,23 @@ public class MenuItemActivity extends ActionBarActivity {
             switch (position) {
 
                 case 0:
+                    // check who called me.
+                    int callingActivity = getIntent().getIntExtra("CALLER", 0);
+                    switch (callingActivity) {
+
+                        case ActivityID.CameraScanActivity:
+                            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_CAM");
+                            String picPath = getIntent().getExtras().getString("QR_RESULT");
+                            scannedQRs.add(picPath);
+                            break;
+
+                        case ActivityID.SavedMenuItemsList:
+
+                            break;
+                    }
+
+
+//                    scannedQRs.add(picPath);
 
                     // TODO pass a directory for first picture from server
                     bundle.putString("menu_item_url", "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg");
@@ -216,4 +253,6 @@ public class MenuItemActivity extends ActionBarActivity {
             return 3;
         }
     }
+
+
 }

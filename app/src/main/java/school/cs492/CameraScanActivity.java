@@ -26,6 +26,8 @@ import net.sourceforge.zbar.ImageScanner;
 import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 
+import java.util.ArrayList;
+
 /* Import ZBar Class files */
 
 public class CameraScanActivity extends Activity {
@@ -40,11 +42,6 @@ public class CameraScanActivity extends Activity {
     private Handler autoFocusHandler;
     private boolean barcodeScanned = false;
     private boolean previewing = true;
-
-    static {
-        System.loadLibrary("iconv");
-    }
-
     PreviewCallback previewCb = new PreviewCallback() {
 
         public void onPreviewFrame(byte[] data, Camera camera) {
@@ -72,6 +69,11 @@ public class CameraScanActivity extends Activity {
             }
         }
     };
+    private ArrayList<String> scannedQRs = new ArrayList<>();
+
+    static {
+        System.loadLibrary("iconv");
+    }
 
     /**
      * A safe way to get an instance of the Camera object.
@@ -87,6 +89,14 @@ public class CameraScanActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        scannedQRs = new ArrayList<>();
+        //scannedQRs_cam = getIntent().getExtras().getStringArrayList("SCANNED_QR");
+        if (getIntent().getExtras() == null) {
+
+        } else {
+            scannedQRs = getIntent().getExtras().getStringArrayList("SCANNED_QR_ITEM");
+        }
 
         setContentView(R.layout.activity_camera_scan);
 
@@ -130,12 +140,31 @@ public class CameraScanActivity extends Activity {
     }
 
     public void handleButtonClick(Button btn) {
-        Intent intent = new Intent(this, MenuItemActivity.class);
-        intent.putExtra("QR_RESULT", qrInfo);
-        startActivity(intent);
-//        intent.putExtra(QR_RESULT_EXTRA, qrInfo);
-//        setResult(RESULT_OK, intent);
-//        finish();
+
+        int callingActivity = getIntent().getIntExtra("CALLER", 0);
+
+        switch (callingActivity) {
+            // Invoked by main.
+            case ActivityID.MainMenuActivity:
+                Intent intent_m = new Intent(this, MenuItemActivity.class);
+                scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_MAIN");
+                intent_m.putExtra("QR_RESULT", qrInfo);
+                intent_m.putExtra("SCANNED_QR_CAM", scannedQRs);
+                intent_m.putExtra("CALLER", ActivityID.CameraScanActivity);
+                startActivity(intent_m);
+                break;
+
+            case ActivityID.MenuItemActivity:
+                Intent intent_i = new Intent(this, MenuItemActivity.class);
+                intent_i.putExtra("QR_RESULT", qrInfo);
+                scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_ITEM");
+                intent_i.putExtra("CALLER", ActivityID.CameraScanActivity);
+                intent_i.putExtra("SCANNED_QR_CAM", scannedQRs);
+                startActivity(intent_i);
+                break;
+        }
+
+
     }
 
     public void onPause() {
