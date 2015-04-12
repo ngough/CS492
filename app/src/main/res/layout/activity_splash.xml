@@ -13,13 +13,13 @@
         android:layout_centerVertical="true" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/searching_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/location_bar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/searching_location_marginTop"
         android:text="Searching Location ..."
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/searching_location_textSize" />
 </RelativeLayout>

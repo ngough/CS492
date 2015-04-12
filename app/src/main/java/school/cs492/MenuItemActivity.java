@@ -47,7 +47,7 @@ public class MenuItemActivity extends ActionBarActivity {
         viewPager.setAdapter(new MyAdapter(fragmentManager));
 
         // set the circle page indicator for the viewPager
-        CirclePageIndicator circleIndicator = (CirclePageIndicator) findViewById(R.id.circles);
+        CirclePageIndicator circleIndicator = (CirclePageIndicator) findViewById(R.id.pager_indicator);
         circleIndicator.setViewPager(viewPager);
         final float density = getResources().getDisplayMetrics().density;
         circleIndicator.setRadius(4 * density);

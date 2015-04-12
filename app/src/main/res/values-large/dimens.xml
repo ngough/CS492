@@ -1,0 +1,27 @@
+<resources>
+    <!-- Splash activity. -->
+    <dimen name="searching_location_textSize">22sp</dimen>
+    <dimen name="searching_location_marginTop">5dp</dimen>
+
+    <!-- Main Menu activity. -->
+    <dimen name="restaurant_title_textSize">40sp</dimen>
+    <dimen name="restaurant_title_marginTop">30dp</dimen>
+    <dimen name="restaurant_title_marginLeft">30dp</dimen>
+    <dimen name="restaurant_title_marginRight">30dp</dimen>
+    <dimen name="main_menu_button_margin">10dp</dimen>
+    <dimen name="main_menu_button_padding">25dp</dimen>
+    <dimen name="main_menu_button_textSize">25sp</dimen>
+
+    <!-- Menu Item activity. -->
+    <dimen name="pager_height">300dp</dimen>
+    <dimen name="pager_indicator_marginBottom">24dp</dimen>
+    <dimen name="menu_item_title_textSize">25sp</dimen>
+    <dimen name="menu_item_title_marginBottom">20dp</dimen>
+    <dimen name="menu_item_title_padding">15dp</dimen>
+    <dimen name="card_marginBottom">20dp</dimen>
+    <dimen name="card_marginLeft">5dp</dimen>
+    <dimen name="card_marginRight">5dp</dimen>
+    <dimen name="card_padding">10dp</dimen>
+    <dimen name="card_title_textSize">20sp</dimen>
+    <dimen name="card_content_textSize">15sp</dimen>
+</resources>

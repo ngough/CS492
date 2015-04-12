@@ -19,7 +19,7 @@
 
         <activity
             android:name=".SplashActivity"
-            android:label="@string/title_activity_splash"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
 
             <intent-filter>
@@ -34,7 +34,8 @@
 
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu"></activity>
+            android:label="@string/title_activity_main_menu"
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".CameraScanActivity"

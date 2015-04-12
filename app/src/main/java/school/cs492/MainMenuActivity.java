@@ -32,6 +32,10 @@ public class MainMenuActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        // set the restaurant picture TODO retrieve the picture form the server
+        ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
+        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").into(imageView);
+
         // set the restaurant title TODO pass the title of the specific restaurant
         restaurantTitle = (TextView) findViewById(R.id.restaurant_title);
         restaurantTitle.setText("Insert Restaurant Title Here");
@@ -43,10 +47,6 @@ public class MainMenuActivity extends ActionBarActivity {
                 ScanButtonHandler((Button) v);
             }
         });
-
-        // set the restaurant picture TODO retrieve the picture form the server
-        ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
-        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").into(imageView);
     }
 
     /**
