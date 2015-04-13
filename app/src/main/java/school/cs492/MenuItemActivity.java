@@ -2,9 +2,7 @@ package school.cs492;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
@@ -33,6 +31,8 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
 
+    private PagerAdapter pagerAdapter;
+
     private ArrayList<String> scannedQRs = new ArrayList<String>();
 
     @Override
@@ -49,7 +49,8 @@ public class MenuItemActivity extends ActionBarActivity {
         // instantiate the viewPager for menu item picture gallery
         viewPager = (ViewPager) findViewById(R.id.pager);
         fragmentManager = getSupportFragmentManager();
-        viewPager.setAdapter(new MyAdapter(fragmentManager));
+        pagerAdapter = new PagerAdapter(fragmentManager, this);
+        viewPager.setAdapter(pagerAdapter);
 
         // set the circle page indicator for the viewPager
         CirclePageIndicator circleIndicator = (CirclePageIndicator) findViewById(R.id.pager_indicator);
@@ -81,32 +82,53 @@ public class MenuItemActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Intent intent, intent_scanned;
+
         // handle presses on the action bar items
         switch (item.getItemId()) {
 
-            case R.id.action_scan:
+            case R.id.action_scan_new_item:
 
-                // TODO call scan activity
-                Intent intent = new Intent(this, CameraScanActivity.class);
+                intent = new Intent(this, CameraScanActivity.class);
                 // Toss around the array list around between MenuItemActivity and CameraScanActivity.
                 intent.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent.putExtra("CALLER", ActivityID.MenuItemActivity);
                 startActivity(intent);
                 return true;
 
-            case R.id.action_settings: // Use this to go back to main.
+            case R.id.opt_scan_new_item:
 
-                Intent intent_main = new Intent(this, MainMenuActivity.class);
-                intent_main.putExtra("SCANNED_QR_ITEM", scannedQRs);
-                intent_main.putExtra("CALLER", ActivityID.MenuItemActivity);
-                startActivity(intent_main);
+                intent = new Intent(this, CameraScanActivity.class);
+                // Toss around the array list around between MenuItemActivity and CameraScanActivity.
+                intent.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent);
                 return true;
 
             case R.id.action_scanned_list:
-                Intent intent_scanned = new Intent(this, SavedMenuItemsList.class);
+
+                intent_scanned = new Intent(this, SavedMenuItemsList.class);
                 intent_scanned.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent_scanned.putExtra("CALLER", ActivityID.MenuItemActivity);
                 startActivity(intent_scanned);
+                return true;
+
+            case R.id.opt_scanned_list:
+
+                intent_scanned = new Intent(this, SavedMenuItemsList.class);
+                intent_scanned.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent_scanned.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent_scanned);
+                return true;
+
+            case R.id.action_go_to_main:
+
+                // TODO call intent to go to main menu
+                return true;
+
+            case R.id.opt_go_to_main:
+
+                // TODO call intent to go to main menu
                 return true;
 
             default:
@@ -165,94 +187,4 @@ public class MenuItemActivity extends ActionBarActivity {
         // TODO use the argument to set the content text
         allergyInformationContent.setText("Insert content here");
     }
-
-    /**
-     * Represents the adapter for the viewPager.
-     *
-     * @author fiorfe01
-     */
-    class MyAdapter extends FragmentPagerAdapter {
-
-
-        /**
-         * Constructor.
-         *
-         * @param fm
-         */
-        public MyAdapter(FragmentManager fm) {
-
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-
-            ImageFragment imageFragment;
-
-            Bundle bundle = new Bundle();
-
-            // changes the displayed menu item picture
-            switch (position) {
-
-                case 0:
-                    // check who called me.
-                    int callingActivity = getIntent().getIntExtra("CALLER", 0);
-                    switch (callingActivity) {
-
-                        case ActivityID.CameraScanActivity:
-                            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_CAM");
-                            String picPath = getIntent().getExtras().getString("QR_RESULT");
-                            scannedQRs.add(picPath);
-                            break;
-
-                        case ActivityID.SavedMenuItemsList:
-
-                            break;
-                    }
-
-
-//                    scannedQRs.add(picPath);
-
-                    // TODO pass a directory for first picture from server
-                    bundle.putString("menu_item_url", "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg");
-
-                    imageFragment = new ImageFragment();
-
-                    imageFragment.setArguments(bundle);
-
-                    return imageFragment;
-
-                case 1:
-
-                    // TODO pass a directory for second picture from server
-                    bundle.putString("menu_item_url", "https://mydinnertoday.files.wordpress.com/2010/01/img_6926.jpg");
-
-                    imageFragment = new ImageFragment();
-
-                    imageFragment.setArguments(bundle);
-
-                    return imageFragment;
-
-                case 2:
-
-                    // TODO pass a directory for third picture from server
-                    bundle.putString("menu_item_url", "https://voguevegetarian.files.wordpress.com/2012/08/mexican-red-lentil-bean-soup.jpg");
-
-                    imageFragment = new ImageFragment();
-
-                    imageFragment.setArguments(bundle);
-
-                    return imageFragment;
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-
-            return 3;
-        }
-    }
-
-
 }

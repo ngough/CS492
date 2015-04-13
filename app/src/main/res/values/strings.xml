@@ -3,9 +3,9 @@
     <string name="app_name">Restaurant Menu Reader</string>
 
     <!-- Toolbar strings. -->
-    <string name="action_settings">Settings</string>
-    <string name="action_scan">Scan</string>
-    <string name="action_scanned_list">Scanned Menu Items</string>
+    <string name="title_action_go_to_main">Go To Main Menu</string>
+    <string name="title_action_scan_new_item">Scan New Item</string>
+    <string name="title_action_scanned_list">Scanned Menu Items</string>
 
     <!-- Activity strings. -->
     <string name="title_activity_splash">SplashActivity</string>
@@ -19,8 +19,47 @@
     <string name="scanned_list">Scanned Items</string>
     <string name="change_restaurant">Change Restaurant</string>
 
-    <!-- Menu Item titles strings. -->
+    <!-- Menu Item headers strings. -->
     <string name="ingredients_title">Ingredients</string>
     <string name="nutritional_facts_title">Nutritional Facts</string>
     <string name="allergy_info_title">Allergy Information</string>
+
+    <!-- Menu Item names strings. -->
+    <string name="name_restaurant1_dish1">Lasagna</string>
+    <string name="name_restaurant1_dish2">Bacon</string>
+    <string name="name_restaurant1_dish3">Lentil Bean Soup</string>
+    <string name="name_restaurant1_dish4">Tiramisu</string>
+    <string name="name_restaurant1_dish5">Fish and Chips</string>
+
+    <string name="name_restaurant2_dish1">BLT</string>
+    <string name="name_restaurant2_dish2">Spaghetti and Meatballs</string>
+    <string name="name_restaurant2_dish3">Hamburger and Fries</string>
+    <string name="name_restaurant2_dish4">Dumplings</string>
+    <string name="name_restaurant2_dish5">Buffalo Chicken Wings</string>
+
+    <!-- Menu Item ingredients strings. -->
+    <string name="ingredients_restaurant1_dish1">Italian sausage, ground beef, onion, tomatoes, ricotta cheese, mozzarella cheese, parmesan cheese.</string>
+    <string name="ingredients_restaurant1_dish2">bacon.</string>
+    <string name="ingredients_restaurant1_dish3">black beans, tomatoes, lentils, carrots, onion, celery, vegetable broth.</string>
+    <string name="ingredients_restaurant1_dish4">eggs, sugar, milk, mascarpone cheese, coffee, ladyfinger cookies, cocoa powder.</string>
+    <string name="ingredients_restaurant1_dish5">cod, potatoes.</string>
+
+    <string name="ingredients_restaurant2_dish1">wheat bread, bacon, lettuce, tomato, mayonnaise.</string>
+    <string name="ingredients_restaurant2_dish2">spaghetti, beef.</string>
+    <string name="ingredients_restaurant2_dish3">white bread, beef, potatoes.</string>
+    <string name="ingredients_restaurant2_dish4">flour, pork.</string>
+    <string name="ingredients_restaurant2_dish5">chicken, buffalo sauce.</string>
+
+    <!-- Menu Item nutritional facts strings. -->
+    <string name="nutrition_restaurant1_dish1">Calories: 400 Fat: 22g Cholesterol: 0g Sodium: 750mg Carbohydrates: 27g Protein: 25g</string>
+    <string name="nutrition_restaurant1_dish2">Calories: 40 Fat: 4g Cholesterol: 9mg Sodium: 200mg Carbohydrates: 0g Protein: 3g</string>
+    <string name="nutrition_restaurant1_dish3">Calories: 180 Fat: 5g Cholesterol: 0mg Sodium: 625mg Carbohydrates: 27g Protein: 10g</string>
+    <string name="nutrition_restaurant1_dish4">Calories: 600 Fat: 46g Cholesterol: 287mg Sodium: 91mg Carbohydrates: 34g Protein: 8g</string>
+    <string name="nutrition_restaurant1_dish5">Calories: 730 Fat: 33g Cholesterol: 0mg Sodium: 1980mg Carbohydrates: 64g Protein: 44g</string>
+
+    <string name="nutrition_restaurant2_dish1">Calories: 550 Fat: 34g Cholesterol: 60mg Sodium: 1094mg Carbohydrates: 43g Protein: 16g</string>
+    <string name="nutrition_restaurant2_dish2">Calories: 970 Fat: 30g Cholesterol: 117mg Sodium: 1268mg Carbohydrates: 132g Protein: 44g</string>
+    <string name="nutrition_restaurant2_dish3">Calories: 500 Fat: 12g Cholesterol: 20mg Sodium: 150mg Carbohydrates: 29g Protein: 13g</string>
+    <string name="nutrition_restaurant2_dish4">Calories: 40 Fat: 2g Cholesterol: 17mg Sodium: 120mg Carbohydrates: 3g Protein: 4g</string>
+    <string name="nutrition_restaurant2_dish5">Calories: 180 Fat: 11g Cholesterol: 75mg Sodium: 1230mg Carbohydrates: 4g Protein: 14g</string>
 </resources>
