@@ -36,6 +36,8 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private ArrayList<String> scannedQRs = new ArrayList<String>();
 
+    private String picPath = "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg"; //Default in case we fuck up.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -68,6 +70,9 @@ public class MenuItemActivity extends ActionBarActivity {
         setIngredientsCard();
         setNutritionalFactsCard();
         setAllergyInformationCard();
+
+
+
     }
 
     @Override
@@ -123,12 +128,20 @@ public class MenuItemActivity extends ActionBarActivity {
 
             case R.id.action_go_to_main:
 
-                // TODO call intent to go to main menu
+                Intent intent_main = new Intent(this, MainMenuActivity.class);
+                intent_main.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent_main.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent_main);
+
                 return true;
 
             case R.id.opt_go_to_main:
 
-                // TODO call intent to go to main menu
+                Intent intent_main2 = new Intent(this, MainMenuActivity.class);
+                intent_main2.putExtra("SCANNED_QR_ITEM", scannedQRs);
+                intent_main2.putExtra("CALLER", ActivityID.MenuItemActivity);
+                startActivity(intent_main2);
+
                 return true;
 
             default:
@@ -187,75 +200,124 @@ public class MenuItemActivity extends ActionBarActivity {
         // TODO use the argument to set the content text
         allergyInformationContent.setText("Insert content here");
     }
-}
-
-/**
- * Represents the adapter for the viewPager.
- *
- * @author fiorfe01
- */
-class PagerAdapter extends FragmentPagerAdapter {
-
     /**
-     * Constructor.
+     * Represents the adapter for the viewPager.
      *
-     * @param fm
+     * @author fiorfe01
      */
-    public PagerAdapter(FragmentManager fm, Context context) {
+    class PagerAdapter extends FragmentPagerAdapter {
 
-        super(fm);
-    }
+        /**
+         * Constructor.
+         *
+         * @param fm
+         */
+        public PagerAdapter(FragmentManager fm, Context context) {
 
-    @Override
-    public Fragment getItem(int position) {
-
-        ImageFragment imageFragment;
-
-        Bundle bundle = new Bundle();
-
-        // changes the displayed menu item picture
-        switch (position) {
-
-            case 0:
-
-                // TODO pass a directory for first picture from server
-                bundle.putString("menu_item_url", "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg");
-
-                imageFragment = new ImageFragment();
-
-                imageFragment.setArguments(bundle);
-
-                return imageFragment;
-
-            case 1:
-
-                // TODO pass a directory for second picture from server
-                bundle.putString("menu_item_url", "https://mydinnertoday.files.wordpress.com/2010/01/img_6926.jpg");
-
-                imageFragment = new ImageFragment();
-
-                imageFragment.setArguments(bundle);
-
-                return imageFragment;
-
-            case 2:
-
-                // TODO pass a directory for third picture from server
-                bundle.putString("menu_item_url", "https://voguevegetarian.files.wordpress.com/2012/08/mexican-red-lentil-bean-soup.jpg");
-
-                imageFragment = new ImageFragment();
-
-                imageFragment.setArguments(bundle);
-
-                return imageFragment;
+            super(fm);
         }
 
-        return null;
-    }
+        @Override
+        public Fragment getItem(int position) {
 
-    @Override
-    public int getCount() {
+            ImageFragment imageFragment;
 
-        return 3;
+            Bundle bundle = new Bundle();
+
+            // changes the displayed menu item picture
+            switch (position) {
+
+                case 0:
+
+                    // TODO pass a directory for first picture from server
+//                    bundle.putString("menu_item_url", "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg");
+
+
+
+                    int callingActivity = getIntent().getIntExtra("CALLER", 0);
+
+                    switch (callingActivity) {
+
+                        case ActivityID.CameraScanActivity:
+                            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_CAM");
+                            picPath = getIntent().getExtras().getString("QR_RESULT");
+                            if(!contains(picPath)){
+                                scannedQRs.add(picPath);
+                            }
+
+                            break;
+
+                        case ActivityID.SavedMenuItemsList:
+                            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_LIST");
+                            picPath = getIntent().getExtras().getString("QR_RESULT");
+                            break;
+                    }
+
+                    bundle.putString("menu_item_url", picPath);
+
+                    imageFragment = new ImageFragment();
+
+                    imageFragment.setArguments(bundle);
+
+                    return imageFragment;
+
+                case 1:
+
+                    // TODO pass a directory for second picture from server
+//                  bundle.putString("menu_item_url", "https://mydinnertoday.files.wordpress.com/2010/01/img_6926.jpg");
+                    String picPath2 = pic2Path(picPath);
+                    bundle.putString("menu_item_url", picPath2);
+                    imageFragment = new ImageFragment();
+
+                    imageFragment.setArguments(bundle);
+
+                    return imageFragment;
+
+                case 2:
+
+                    // TODO pass a directory for third picture from server
+//                    bundle.putString("menu_item_url", "https://voguevegetarian.files.wordpress.com/2012/08/mexican-red-lentil-bean-soup.jpg");
+                    String picPath3 = pic3Path(picPath);
+                    bundle.putString("menu_item_url", picPath3);
+                    imageFragment = new ImageFragment();
+
+                    imageFragment.setArguments(bundle);
+
+                    return imageFragment;
+            }
+
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+
+            return 3;
+        }
+
+        public String pic2Path(String picPath)
+        {
+           String pic2Path = picPath.replaceAll("pic1","pic2");
+           return pic2Path;
+        }
+        public String pic3Path(String picPath)
+        {
+            String pic3Path = picPath.replaceAll("pic1","pic3");
+            return pic3Path;
+        }
+        // Returns true if arrayList already have that element.
+        public boolean contains(String picPath){
+            boolean result = false;
+            for(int i=0;i<scannedQRs.size();i++)
+            {
+                if(scannedQRs.get(i).equals(picPath)){
+                    result = true;
+                    break;
+                }
+
+            }
+            return result;
+        }
     }
 }
+
