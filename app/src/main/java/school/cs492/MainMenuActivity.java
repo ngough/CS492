@@ -39,7 +39,14 @@ public class MainMenuActivity extends ActionBarActivity {
 
         // set the restaurant title TODO pass the title of the specific restaurant
         restaurantTitle = (TextView) findViewById(R.id.restaurant_title);
-        restaurantTitle.setText("Insert Restaurant Title Here");
+        String restaurantName;
+        restaurantName = getIntent().getStringExtra("restaurant");
+        if(restaurantName == null || restaurantName == "") {
+            restaurantTitle.setText("Name not received");
+        } //End if.
+        else {
+            restaurantTitle.setText(restaurantName);
+        }
 
         // set the listener for the scan button
         scanBtn = (Button) findViewById(R.id.scan_button);
@@ -150,6 +157,8 @@ public class MainMenuActivity extends ActionBarActivity {
     public void goToRestaurantList(View view) {
 
         Intent intent = new Intent(this, RestaurantListActivity.class);
+        intent.putExtra("CALLER", ActivityID.MainMenuActivity);
+        intent.putExtra("SCANNED_QR_MAIN", scannedQRs);
 
         startActivity(intent);
     }

@@ -1,18 +1,20 @@
 package school.cs492;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import java.util.ArrayList;
 
 public class RestaurantListActivity extends ActionBarActivity {
-
+    ArrayList<String> scannedQRs = new ArrayList<String>();
     ListView restaurantList;
 
-    String[] restaurants = {"Restaurant 1", "Restaurant 2", "Restaurant 3", "Restaurant 4"};
+    String[] restaurants = {"CS Cafe", "Kettler Kitchen"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,11 @@ public class RestaurantListActivity extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, restaurants);
 
         restaurantList.setAdapter(adapter);
-    }
+
+        if (getIntent().getStringArrayListExtra("SCANNED_QR_ITEM") != null) {
+            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_ITEM");
+        } //End if.
+    } //End onCreate(Bundle) method.
 
 
     @Override
@@ -42,12 +48,30 @@ public class RestaurantListActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        String restaurantName;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.opt_scan_new_item) {
             return true;
         }
+        if(id == 0) {
+            restaurantName = "CS Cafe";
+        } //End if.
+        else if(id == 1) {
+            restaurantName = "Kettler Kitchen";
+        } //End else if.
+        else {
+            restaurantName = "Unknown";
+        } //End else.
+
+        Intent intent_main = new Intent(RestaurantListActivity.this, MainMenuActivity.class);
+        intent_main.putExtra("restaurant", restaurantName);
+        intent_main.putExtra("SCANNED_QR_MAIN", scannedQRs);
+
+        //TODO Finish this activity so it calls the main menu properly.
+        startActivity(intent_main);
 
         return super.onOptionsItemSelected(item);
+
     }
 }

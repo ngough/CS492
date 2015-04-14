@@ -26,6 +26,7 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
     protected String myLatitudeText;
     protected String myLongitudeText;
     private IntentLauncher launcher;
+    String restaurant = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +68,13 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
 
     @Override
     public void onConnected(Bundle bundle) {
+        double latitude = 0.0;
+        double longitude = 0.0;
         myLocation = LocationServices.FusedLocationApi.getLastLocation(myGoogleApiClient);
 
         if (myLocation != null) {
+            latitude = myLocation.getLatitude();
+            longitude = myLocation.getLongitude();
             myLatitudeText = String.valueOf(myLocation.getLatitude());
             myLongitudeText = String.valueOf(myLocation.getLongitude());
         } //End if.
@@ -77,6 +82,18 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
             myLatitudeText = "Location unreadable";
             myLongitudeText = "Location unreadable";
         } //End else.
+
+        if(latitude != 0.0 && longitude != 0.0) {
+            if(longitude < -85.110000) {
+                restaurant = "Welcome to Kettler Kitchen";
+            } //End if.
+            else {
+                restaurant = "Welcome to CS Cafe";
+            } //End else.
+        } //End if.
+        else {
+            restaurant = "GPS unavailable";
+        }
 
         Log.i(TAG, myLatitudeText);
         Log.i(TAG, myLongitudeText);
@@ -103,8 +120,10 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
                 Log.e("Splash class", e.getMessage());
             }
 
+            //TODO Call the restaurant list activity if no gps coordinates available.
             //start main activity...
             Intent intent = new Intent(SplashActivity.this, MainMenuActivity.class);
+            intent.putExtra("restaurant", restaurant);
             SplashActivity.this.startActivity(intent);
             SplashActivity.this.finish();
         } //End run() method.
