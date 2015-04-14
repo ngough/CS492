@@ -1,8 +1,11 @@
 package school.cs492;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
@@ -31,8 +34,6 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
 
-    private PagerAdapter pagerAdapter;
-
     private ArrayList<String> scannedQRs = new ArrayList<String>();
 
     @Override
@@ -49,8 +50,7 @@ public class MenuItemActivity extends ActionBarActivity {
         // instantiate the viewPager for menu item picture gallery
         viewPager = (ViewPager) findViewById(R.id.pager);
         fragmentManager = getSupportFragmentManager();
-        pagerAdapter = new PagerAdapter(fragmentManager, this);
-        viewPager.setAdapter(pagerAdapter);
+        viewPager.setAdapter(new PagerAdapter(fragmentManager, this));
 
         // set the circle page indicator for the viewPager
         CirclePageIndicator circleIndicator = (CirclePageIndicator) findViewById(R.id.pager_indicator);
@@ -186,5 +186,76 @@ public class MenuItemActivity extends ActionBarActivity {
 
         // TODO use the argument to set the content text
         allergyInformationContent.setText("Insert content here");
+    }
+}
+
+/**
+ * Represents the adapter for the viewPager.
+ *
+ * @author fiorfe01
+ */
+class PagerAdapter extends FragmentPagerAdapter {
+
+    /**
+     * Constructor.
+     *
+     * @param fm
+     */
+    public PagerAdapter(FragmentManager fm, Context context) {
+
+        super(fm);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+
+        ImageFragment imageFragment;
+
+        Bundle bundle = new Bundle();
+
+        // changes the displayed menu item picture
+        switch (position) {
+
+            case 0:
+
+                // TODO pass a directory for first picture from server
+                bundle.putString("menu_item_url", "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg");
+
+                imageFragment = new ImageFragment();
+
+                imageFragment.setArguments(bundle);
+
+                return imageFragment;
+
+            case 1:
+
+                // TODO pass a directory for second picture from server
+                bundle.putString("menu_item_url", "https://mydinnertoday.files.wordpress.com/2010/01/img_6926.jpg");
+
+                imageFragment = new ImageFragment();
+
+                imageFragment.setArguments(bundle);
+
+                return imageFragment;
+
+            case 2:
+
+                // TODO pass a directory for third picture from server
+                bundle.putString("menu_item_url", "https://voguevegetarian.files.wordpress.com/2012/08/mexican-red-lentil-bean-soup.jpg");
+
+                imageFragment = new ImageFragment();
+
+                imageFragment.setArguments(bundle);
+
+                return imageFragment;
+        }
+
+        return null;
+    }
+
+    @Override
+    public int getCount() {
+
+        return 3;
     }
 }
