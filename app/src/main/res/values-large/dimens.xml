@@ -8,9 +8,9 @@
     <dimen name="restaurant_title_marginTop">30dp</dimen>
     <dimen name="restaurant_title_marginLeft">30dp</dimen>
     <dimen name="restaurant_title_marginRight">30dp</dimen>
-    <dimen name="main_menu_button_margin">10dp</dimen>
-    <dimen name="main_menu_button_padding">25dp</dimen>
-    <dimen name="main_menu_button_textSize">25sp</dimen>
+    <dimen name="custom_button_margin">10dp</dimen>
+    <dimen name="custom_button_padding">25dp</dimen>
+    <dimen name="custom_button_textSize">25sp</dimen>
 
     <!-- Menu Item activity. -->
     <dimen name="pager_height">300dp</dimen>

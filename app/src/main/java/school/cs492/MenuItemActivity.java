@@ -36,7 +36,19 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private ArrayList<String> scannedQRs = new ArrayList<String>();
 
-    private String picPath = "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg"; //Default in case we fuck up.
+    private String picPath = "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg"; //plan b
+
+    /**
+     * Gets the resource string identifier.
+     *
+     * @param context
+     * @param name
+     * @return string identifier for resource
+     */
+    public static int getStringIdentifier(Context context, String name) {
+
+        return context.getResources().getIdentifier(name, "string", context.getPackageName());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +78,13 @@ public class MenuItemActivity extends ActionBarActivity {
         menuItemTitle = (TextView) findViewById(R.id.menu_item_title);
         menuItemTitle.setText("Insert Menu Item Title Here");
 
+        // set picture path from qr scan
+        setPicPath();
+
         // set the menu item cards TODO pass the text data to this constructor
         setIngredientsCard();
         setNutritionalFactsCard();
         setAllergyInformationCard();
-
-
-
     }
 
     @Override
@@ -151,7 +163,72 @@ public class MenuItemActivity extends ActionBarActivity {
     }
 
     /**
-     * Sets the ingredients card. TODO add argument that takes the text content
+     * Returns true if arrayList already has that element.
+     */
+    public boolean contains(String picPath) {
+
+        boolean result = false;
+
+        for (int i = 0; i < scannedQRs.size(); i++) {
+
+            if (scannedQRs.get(i).equals(picPath)) {
+
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Sets the picture path from the qr scan.
+     */
+    private void setPicPath() {
+
+        int callingActivity = getIntent().getIntExtra("CALLER", 0);
+
+        switch (callingActivity) {
+
+            case ActivityID.CameraScanActivity:
+
+                scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_CAM");
+
+                picPath = getIntent().getExtras().getString("QR_RESULT");
+
+                if (!contains(picPath)) {
+
+                    scannedQRs.add(picPath);
+                }
+
+                break;
+
+            case ActivityID.SavedMenuItemsList:
+
+                scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_LIST");
+
+                picPath = getIntent().getExtras().getString("QR_RESULT");
+
+                break;
+        }
+    }
+
+    /**
+     * Gets the restaurant data path used to get the data from resource.
+     *
+     * @return restaurant + "_" + dish
+     */
+    private String getRestaurantDataPath() {
+
+        String restaurant = picPath.substring(23, 34);
+
+        String dish = picPath.substring(35, 40);
+
+        return restaurant + "_" + dish;
+    }
+
+    /**
+     * Sets the ingredients card.
      */
     private void setIngredientsCard() {
 
@@ -163,12 +240,13 @@ public class MenuItemActivity extends ActionBarActivity {
 
         ingredientsTitle.setText(R.string.ingredients_title);
 
-        // TODO use the argument to set the content text
-        ingredientsContent.setText("Insert content here");
+        int ingredientsPath = getStringIdentifier(this, "ingredients_" + getRestaurantDataPath());
+
+        ingredientsContent.setText(getString(ingredientsPath));
     }
 
     /**
-     * Sets the nutritional facts card. TODO add argument that takes the text content
+     * Sets the nutritional facts card.
      */
     private void setNutritionalFactsCard() {
 
@@ -180,8 +258,9 @@ public class MenuItemActivity extends ActionBarActivity {
 
         nutritionalFactsTitle.setText(R.string.nutritional_facts_title);
 
-        // TODO use the argument to set the content text
-        nutritionalFactsContent.setText("Insert content here");
+        int nutritionalFactsPath = getStringIdentifier(this, "nutrition_" + getRestaurantDataPath());
+
+        nutritionalFactsContent.setText(getString(nutritionalFactsPath));
     }
 
     /**
@@ -200,6 +279,7 @@ public class MenuItemActivity extends ActionBarActivity {
         // TODO use the argument to set the content text
         allergyInformationContent.setText("Insert content here");
     }
+
     /**
      * Represents the adapter for the viewPager.
      *
@@ -232,28 +312,7 @@ public class MenuItemActivity extends ActionBarActivity {
                     // TODO pass a directory for first picture from server
 //                    bundle.putString("menu_item_url", "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg");
 
-
-
-                    int callingActivity = getIntent().getIntExtra("CALLER", 0);
-
-                    switch (callingActivity) {
-
-                        case ActivityID.CameraScanActivity:
-                            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_CAM");
-                            picPath = getIntent().getExtras().getString("QR_RESULT");
-                            if(!contains(picPath)){
-                                scannedQRs.add(picPath);
-                            }
-
-                            break;
-
-                        case ActivityID.SavedMenuItemsList:
-                            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_LIST");
-                            picPath = getIntent().getExtras().getString("QR_RESULT");
-                            break;
-                    }
-
-                    bundle.putString("menu_item_url", picPath);
+                    bundle.putString("menu_item_url", picPath + "pic1.jpg");
 
                     imageFragment = new ImageFragment();
 
@@ -265,8 +324,8 @@ public class MenuItemActivity extends ActionBarActivity {
 
                     // TODO pass a directory for second picture from server
 //                  bundle.putString("menu_item_url", "https://mydinnertoday.files.wordpress.com/2010/01/img_6926.jpg");
-                    String picPath2 = pic2Path(picPath);
-                    bundle.putString("menu_item_url", picPath2);
+
+                    bundle.putString("menu_item_url", picPath + "pic2.jpg");
                     imageFragment = new ImageFragment();
 
                     imageFragment.setArguments(bundle);
@@ -277,8 +336,8 @@ public class MenuItemActivity extends ActionBarActivity {
 
                     // TODO pass a directory for third picture from server
 //                    bundle.putString("menu_item_url", "https://voguevegetarian.files.wordpress.com/2012/08/mexican-red-lentil-bean-soup.jpg");
-                    String picPath3 = pic3Path(picPath);
-                    bundle.putString("menu_item_url", picPath3);
+
+                    bundle.putString("menu_item_url", picPath + "pic3.jpg");
                     imageFragment = new ImageFragment();
 
                     imageFragment.setArguments(bundle);
@@ -294,30 +353,5 @@ public class MenuItemActivity extends ActionBarActivity {
 
             return 3;
         }
-
-        public String pic2Path(String picPath)
-        {
-           String pic2Path = picPath.replaceAll("pic1","pic2");
-           return pic2Path;
-        }
-        public String pic3Path(String picPath)
-        {
-            String pic3Path = picPath.replaceAll("pic1","pic3");
-            return pic3Path;
-        }
-        // Returns true if arrayList already have that element.
-        public boolean contains(String picPath){
-            boolean result = false;
-            for(int i=0;i<scannedQRs.size();i++)
-            {
-                if(scannedQRs.get(i).equals(picPath)){
-                    result = true;
-                    break;
-                }
-
-            }
-            return result;
-        }
     }
 }
-

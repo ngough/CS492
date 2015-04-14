@@ -34,8 +34,7 @@
 
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu"
-            android:screenOrientation="portrait"></activity>
+            android:label="@string/title_activity_main_menu"></activity>
 
         <activity
             android:name=".CameraScanActivity"

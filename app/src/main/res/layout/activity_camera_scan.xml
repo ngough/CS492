@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/cameraPreview"
         android:layout_width="match_parent"
-        android:layout_height="472dp" />
-
-    <!--<TextView-->
-    <!--android:id="@+id/scanText"-->
-    <!--android:text="Scanning..."-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="match_parent">-->
-    <!--</TextView>-->
+        android:layout_height="match_parent" />
 
     <Button
         android:id="@+id/OkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="OK" />
-
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/custom_button_margin"
+        android:background="@drawable/button_selector"
+        android:padding="@dimen/custom_button_padding"
+        android:text="@string/ok_title"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/custom_button_textSize"
+        android:textStyle="bold" />
+</RelativeLayout>

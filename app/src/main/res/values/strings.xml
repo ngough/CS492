@@ -19,6 +19,9 @@
     <string name="scanned_list">Scanned Items</string>
     <string name="change_restaurant">Change Restaurant</string>
 
+    <!-- Camera Scan strings. -->
+    <string name="ok_title">OK</string>
+
     <!-- Menu Item headers strings. -->
     <string name="ingredients_title">Ingredients</string>
     <string name="nutritional_facts_title">Nutritional Facts</string>
@@ -38,28 +41,28 @@
     <string name="name_restaurant2_dish5">Buffalo Chicken Wings</string>
 
     <!-- Menu Item ingredients strings. -->
-    <string name="ingredients_restaurant1_dish1">Italian sausage, ground beef, onion, tomatoes, ricotta cheese, mozzarella cheese, parmesan cheese.</string>
-    <string name="ingredients_restaurant1_dish2">bacon.</string>
-    <string name="ingredients_restaurant1_dish3">black beans, tomatoes, lentils, carrots, onion, celery, vegetable broth.</string>
-    <string name="ingredients_restaurant1_dish4">eggs, sugar, milk, mascarpone cheese, coffee, ladyfinger cookies, cocoa powder.</string>
-    <string name="ingredients_restaurant1_dish5">cod, potatoes.</string>
+    <string name="ingredients_restaurant1_dish1">Italian sausage\n\nGround beef\n\nOnion\n\nTomatoes\n\nRicotta cheese\n\nMozzarella cheese\n\nParmesan cheese</string>
+    <string name="ingredients_restaurant1_dish2">Bacon</string>
+    <string name="ingredients_restaurant1_dish3">Black beans\n\nTomatoes\n\nLentils\n\nCarrots\n\nOnion\n\nCelery\n\nVegetable broth</string>
+    <string name="ingredients_restaurant1_dish4">Eggs\n\nSugar\n\nMilk\n\nMascarpone cheese\n\nCoffee\n\nLadyfinger cookies\n\nCocoa powder</string>
+    <string name="ingredients_restaurant1_dish5">Cod\n\nPotatoes</string>
 
-    <string name="ingredients_restaurant2_dish1">wheat bread, bacon, lettuce, tomato, mayonnaise.</string>
-    <string name="ingredients_restaurant2_dish2">spaghetti, beef.</string>
-    <string name="ingredients_restaurant2_dish3">white bread, beef, potatoes.</string>
-    <string name="ingredients_restaurant2_dish4">flour, pork.</string>
-    <string name="ingredients_restaurant2_dish5">chicken, buffalo sauce.</string>
+    <string name="ingredients_restaurant2_dish1">Wheat bread\n\nBacon\nLettuce\n\nTomato\n\nMayonnaise</string>
+    <string name="ingredients_restaurant2_dish2">Spaghetti\n\nBeef</string>
+    <string name="ingredients_restaurant2_dish3">White bread\n\nBeef\n\nPotatoes</string>
+    <string name="ingredients_restaurant2_dish4">Flour\n\nPork</string>
+    <string name="ingredients_restaurant2_dish5">Chicken\n\nBuffalo sauce</string>
 
     <!-- Menu Item nutritional facts strings. -->
-    <string name="nutrition_restaurant1_dish1">Calories: 400 Fat: 22g Cholesterol: 0g Sodium: 750mg Carbohydrates: 27g Protein: 25g</string>
-    <string name="nutrition_restaurant1_dish2">Calories: 40 Fat: 4g Cholesterol: 9mg Sodium: 200mg Carbohydrates: 0g Protein: 3g</string>
-    <string name="nutrition_restaurant1_dish3">Calories: 180 Fat: 5g Cholesterol: 0mg Sodium: 625mg Carbohydrates: 27g Protein: 10g</string>
-    <string name="nutrition_restaurant1_dish4">Calories: 600 Fat: 46g Cholesterol: 287mg Sodium: 91mg Carbohydrates: 34g Protein: 8g</string>
-    <string name="nutrition_restaurant1_dish5">Calories: 730 Fat: 33g Cholesterol: 0mg Sodium: 1980mg Carbohydrates: 64g Protein: 44g</string>
+    <string name="nutrition_restaurant1_dish1">Calories: 400\n\nFat: 22g\n\nCholesterol: 0g\n\nSodium: 750mg\n\nCarbohydrates: 27g\n\nProtein: 25g</string>
+    <string name="nutrition_restaurant1_dish2">Calories: 40\n\nFat: 4g\n\nCholesterol: 9mg\n\nSodium: 200mg\n\nCarbohydrates: 0g\n\nProtein: 3g</string>
+    <string name="nutrition_restaurant1_dish3">Calories: 180\n\nFat: 5g\n\nCholesterol: 0mg\n\nSodium: 625mg\n\nCarbohydrates: 27g\n\nProtein: 10g</string>
+    <string name="nutrition_restaurant1_dish4">Calories: 600\n\nFat: 46g\n\nCholesterol: 287mg\n\nSodium: 91mg\n\nCarbohydrates: 34g\n\nProtein: 8g</string>
+    <string name="nutrition_restaurant1_dish5">Calories: 730\n\nFat: 33g\n\nCholesterol: 0mg\n\nSodium: 1980mg\n\nCarbohydrates: 64g\n\nProtein: 44g</string>
 
-    <string name="nutrition_restaurant2_dish1">Calories: 550 Fat: 34g Cholesterol: 60mg Sodium: 1094mg Carbohydrates: 43g Protein: 16g</string>
-    <string name="nutrition_restaurant2_dish2">Calories: 970 Fat: 30g Cholesterol: 117mg Sodium: 1268mg Carbohydrates: 132g Protein: 44g</string>
-    <string name="nutrition_restaurant2_dish3">Calories: 500 Fat: 12g Cholesterol: 20mg Sodium: 150mg Carbohydrates: 29g Protein: 13g</string>
-    <string name="nutrition_restaurant2_dish4">Calories: 40 Fat: 2g Cholesterol: 17mg Sodium: 120mg Carbohydrates: 3g Protein: 4g</string>
-    <string name="nutrition_restaurant2_dish5">Calories: 180 Fat: 11g Cholesterol: 75mg Sodium: 1230mg Carbohydrates: 4g Protein: 14g</string>
+    <string name="nutrition_restaurant2_dish1">Calories: 550\n\nFat: 34g\n\nCholesterol: 60mg\n\nSodium: 1094mg\n\nCarbohydrates: 43g\n\nProtein: 16g</string>
+    <string name="nutrition_restaurant2_dish2">Calories: 970\n\nFat: 30g\n\nCholesterol: 117mg\n\nSodium: 1268mg\n\nCarbohydrates: 132g\n\nProtein: 44g</string>
+    <string name="nutrition_restaurant2_dish3">Calories: 500\n\nFat: 12g\n\nCholesterol: 20mg\n\nSodium: 150mg\n\nCarbohydrates: 29g\n\nProtein: 13g</string>
+    <string name="nutrition_restaurant2_dish4">Calories: 40\n\nFat: 2g\n\nCholesterol: 17mg\n\nSodium: 120mg\n\nCarbohydrates: 3g\n\nProtein: 4g</string>
+    <string name="nutrition_restaurant2_dish5">Calories: 180\n\nFat: 11g\n\nCholesterol: 75mg\n\nSodium: 1230mg\n\nCarbohydrates: 4g\n\nProtein: 14g</string>
 </resources>

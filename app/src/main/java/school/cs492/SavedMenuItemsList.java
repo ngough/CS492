@@ -46,33 +46,31 @@ public class SavedMenuItemsList extends ActionBarActivity {
         String[] foods = new String[numOfItem];
 
         // Loop through the ArrayList and figure out which items were scanned.
-        for(int i=0;i<numOfItem;i++){
+        for (int i = 0; i < numOfItem; i++) {
 
-            if(scannedQRs.get(i).contains("restaurant1"))
-            {
-                if(scannedQRs.get(i).contains("dish1")){
-                    foods[i]=food_source_1[0];
-                }else if(scannedQRs.get(i).contains("dish2")){
-                    foods[i]=food_source_1[1];
-                }else if(scannedQRs.get(i).contains("dish3")){
-                    foods[i]=food_source_1[2];
-                }else if(scannedQRs.get(i).contains("dish4")){
-                    foods[i]=food_source_1[3];
-                }else if(scannedQRs.get(i).contains("dish5")){
-                    foods[i]=food_source_1[4];
+            if (scannedQRs.get(i).contains("restaurant1")) {
+                if (scannedQRs.get(i).contains("dish1")) {
+                    foods[i] = food_source_1[0];
+                } else if (scannedQRs.get(i).contains("dish2")) {
+                    foods[i] = food_source_1[1];
+                } else if (scannedQRs.get(i).contains("dish3")) {
+                    foods[i] = food_source_1[2];
+                } else if (scannedQRs.get(i).contains("dish4")) {
+                    foods[i] = food_source_1[3];
+                } else if (scannedQRs.get(i).contains("dish5")) {
+                    foods[i] = food_source_1[4];
                 }
-            }
-            else{
-                if(scannedQRs.get(i).contains("dish1")){
-                    foods[i]=food_source_2[0];
-                }else if(scannedQRs.get(i).contains("dish2")){
-                    foods[i]=food_source_2[1];
-                }else if(scannedQRs.get(i).contains("dish3")){
-                    foods[i]=food_source_2[2];
-                }else if(scannedQRs.get(i).contains("dish4")){
-                    foods[i]=food_source_2[3];
-                }else if(scannedQRs.get(i).contains("dish5")){
-                    foods[i]=food_source_2[4];
+            } else {
+                if (scannedQRs.get(i).contains("dish1")) {
+                    foods[i] = food_source_2[0];
+                } else if (scannedQRs.get(i).contains("dish2")) {
+                    foods[i] = food_source_2[1];
+                } else if (scannedQRs.get(i).contains("dish3")) {
+                    foods[i] = food_source_2[2];
+                } else if (scannedQRs.get(i).contains("dish4")) {
+                    foods[i] = food_source_2[3];
+                } else if (scannedQRs.get(i).contains("dish5")) {
+                    foods[i] = food_source_2[4];
                 }
             }
         }
@@ -94,37 +92,37 @@ public class SavedMenuItemsList extends ActionBarActivity {
 
 
                         String food = String.valueOf(parent.getItemAtPosition(position));
-                        String foodItemPath="http://goughn.ddns.net/restaurant1/dish1/pic1.jpg";
-                        switch(food){
+                        String foodItemPath = "http://goughn.ddns.net/restaurant1/dish1/pic1.jpg";
+                        switch (food) {
                             case "Sir fried chicken and rice":
-                                foodItemPath="http://goughn.ddns.net/restaurant1/dish1/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant1/dish1/pic1.jpg";
                                 break;
                             case "Bacon":
-                                foodItemPath="http://goughn.ddns.net/restaurant1/dish2/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant1/dish2/pic1.jpg";
                                 break;
                             case "Lentil bean soup":
-                                foodItemPath="http://goughn.ddns.net/restaurant1/dish3/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant1/dish3/pic1.jpg";
                                 break;
                             case "Tiramisu":
-                                foodItemPath="http://goughn.ddns.net/restaurant1/dish4/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant1/dish4/pic1.jpg";
                                 break;
                             case "Fish & Chips":
-                                foodItemPath="http://goughn.ddns.net/restaurant1/dish5/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant1/dish5/pic1.jpg";
                                 break;
                             case "BLT":
-                                foodItemPath="http://goughn.ddns.net/restaurant2/dish1/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant2/dish1/pic1.jpg";
                                 break;
                             case "Spaghetti & meatball":
-                                foodItemPath="http://goughn.ddns.net/restaurant2/dish2/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant2/dish2/pic1.jpg";
                                 break;
                             case "Hamburger & Fries":
-                                foodItemPath="http://goughn.ddns.net/restaurant2/dish3/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant2/dish3/pic1.jpg";
                                 break;
                             case "Dumpling":
-                                foodItemPath="http://goughn.ddns.net/restaurant2/dish4/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant2/dish4/pic1.jpg";
                                 break;
                             case "Buffalo Chicken Wings":
-                                foodItemPath="http://goughn.ddns.net/restaurant2/dish5/pic1.jpg";
+                                foodItemPath = "http://goughn.ddns.net/restaurant2/dish5/pic1.jpg";
                                 break;
                         }
 
