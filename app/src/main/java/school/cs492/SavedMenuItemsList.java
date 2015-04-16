@@ -80,7 +80,7 @@ public class SavedMenuItemsList extends ActionBarActivity {
 //            foods[i] = food_source[i];
 //        }
 
-        ListAdapter custAdapter = new CustomAdapter(this, foods);
+        ListAdapter custAdapter = new CustomAdapter(this, foods,scannedQRs);
         ListView custListView = (ListView) findViewById(R.id.listView);
         custListView.setAdapter(custAdapter);
 
