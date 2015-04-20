@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_alignParentEnd="true"
@@ -21,7 +21,7 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="Compare Items"
+        android:text="Compare"
         android:id="@+id/CompBtn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

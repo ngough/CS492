@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -23,9 +24,22 @@ public class SavedMenuItemsList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_menu_items_list);
 
+
+
+        // Find compare button and assign an listener to it.
+        Button compBtn = (Button) findViewById(R.id.CompBtn);
+        compBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                CompBtnHandler((Button) v);
+            }
+        });
+
+
+
+
+
         // Get the scannedQRs.
         // If it's clicked by button in MainMenu.
-
         int callingActivity = getIntent().getIntExtra("CALLER", 0);
         switch (callingActivity) {
 
@@ -41,8 +55,8 @@ public class SavedMenuItemsList extends ActionBarActivity {
         // Get the number of
         int numOfItem = scannedQRs.size();
 
-        String[] food_source_1 = {"Stir fried chicken and rice", "Bacon", "Lentil bean soup", "Tiramisu", "Fish & Chips"};
-        String[] food_source_2 = {"BLT", "Spaghetti & meatball", "Hamburger & Fries", "Dumpling", "Buffalo Chicken Wings"};
+        String[] food_source_1 = {"Stired Fried Chicked and Rice", "Bacon", "Lentil bean soup", "Tiramisu", "Fish and Chips"};
+        String[] food_source_2 = {"BLT", "Spaghetti and Meatballs", "Hamburger and Fries", "Dumplings", "Buffalo Chicken Wings"};
         String[] foods = new String[numOfItem];
 
         // Loop through the ArrayList and figure out which items were scanned.
@@ -94,7 +108,7 @@ public class SavedMenuItemsList extends ActionBarActivity {
                         String food = String.valueOf(parent.getItemAtPosition(position));
                         String foodItemPath = "http://goughn.ddns.net/restaurant1/dish1/pic1.jpg";
                         switch (food) {
-                            case "Sir fried chicken and rice":
+                            case "Stired Fried Chicked and Rice":
                                 foodItemPath = "http://goughn.ddns.net/restaurant1/dish1/pic1.jpg";
                                 break;
                             case "Bacon":
@@ -106,19 +120,19 @@ public class SavedMenuItemsList extends ActionBarActivity {
                             case "Tiramisu":
                                 foodItemPath = "http://goughn.ddns.net/restaurant1/dish4/pic1.jpg";
                                 break;
-                            case "Fish & Chips":
+                            case "Fish and Chips":
                                 foodItemPath = "http://goughn.ddns.net/restaurant1/dish5/pic1.jpg";
                                 break;
                             case "BLT":
                                 foodItemPath = "http://goughn.ddns.net/restaurant2/dish1/pic1.jpg";
                                 break;
-                            case "Spaghetti & meatball":
+                            case "Spaghetti and Meatball":
                                 foodItemPath = "http://goughn.ddns.net/restaurant2/dish2/pic1.jpg";
                                 break;
-                            case "Hamburger & Fries":
+                            case "Hamburger and Fries":
                                 foodItemPath = "http://goughn.ddns.net/restaurant2/dish3/pic1.jpg";
                                 break;
-                            case "Dumpling":
+                            case "Dumplings":
                                 foodItemPath = "http://goughn.ddns.net/restaurant2/dish4/pic1.jpg";
                                 break;
                             case "Buffalo Chicken Wings":
@@ -142,6 +156,14 @@ public class SavedMenuItemsList extends ActionBarActivity {
 
     }
 
+    public void CompBtnHandler(Button btn){
+
+        Intent intent = new Intent(this, SelectCompare.class);
+        intent.putExtra("CALLER", ActivityID.SavedMenuItemsList);
+
+        intent.putExtra("SCANNED_QR_LIST", scannedQRs);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
