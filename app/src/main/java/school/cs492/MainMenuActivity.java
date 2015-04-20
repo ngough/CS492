@@ -3,7 +3,6 @@ package school.cs492;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,10 +40,24 @@ public class MainMenuActivity extends ActionBarActivity {
         restaurantTitle = (TextView) findViewById(R.id.restaurant_title);
         String restaurantName;
         restaurantName = getIntent().getStringExtra("restaurant");
-        if(restaurantName == null || restaurantName == "") {
+        if (restaurantName == null || restaurantName == "") {
             restaurantTitle.setText("Name not received");
         } //End if.
         else {
+
+            if (restaurantTitle.equals("Welcome to CS Cafe")) {
+
+                // set the restaurant picture
+                ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
+                Picasso.with(this).load("http://virtualtour.ipfw.edu/images/photoGallery/sized/et/et7-vert.jpg").into(imageView);
+
+            } else if (restaurantTitle.equals("Welcome to Kettler Kitchen")) {
+
+                // set the restaurant picture
+                ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
+                Picasso.with(this).load("http://virtualtour.ipfw.edu/images/photoGallery/sized/kt/kt1-vert.jpg").into(imageView);
+            }
+
             restaurantTitle.setText(restaurantName);
         }
 
@@ -70,9 +83,9 @@ public class MainMenuActivity extends ActionBarActivity {
 //            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_MAIN");
 //        }
 
-        // set the restaurant picture TODO retrieve the picture form the server
+        // set the restaurant picture
         ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
-        Picasso.with(this).load("http://www.ipfw.edu/dotAsset/185440.JPG").into(imageView);
+        Picasso.with(this).load("http://virtualtour.ipfw.edu/images/photoGallery/sized/et/et7-vert.jpg").into(imageView);
     }
 
     /**
@@ -130,23 +143,6 @@ public class MainMenuActivity extends ActionBarActivity {
             //String qrResult = intent.getStringExtra(CameraScanActivity.QR_RESULT_EXTRA);
             //infoView.setText(qrResult);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        // handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.opt_scan_new_item) {
-
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**

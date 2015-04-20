@@ -28,15 +28,13 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private ViewPager viewPager;
 
-    private TextView menuItemTitle;
-
     private FragmentManager fragmentManager;
 
     private Toolbar toolbar;
 
     private ArrayList<String> scannedQRs = new ArrayList<String>();
 
-    private String picPath = "https://veggiedivaskitchen.files.wordpress.com/2012/03/lentil-bean-soup.jpg"; //plan b
+    private String picPath;
 
     /**
      * Gets the resource string identifier.
@@ -74,14 +72,11 @@ public class MenuItemActivity extends ActionBarActivity {
         circleIndicator.setStrokeWidth(0);
         circleIndicator.setPageColor(getResources().getColor(R.color.background_grey));
 
-        // set the menu item title TODO pass the title of the specific menu item
-        menuItemTitle = (TextView) findViewById(R.id.menu_item_title);
-        menuItemTitle.setText("Insert Menu Item Title Here");
-
         // set picture path from qr scan
         setPicPath();
 
-        // set the menu item cards TODO pass the text data to this constructor
+        // set the menu item cards
+        setMenuItemTitle();
         setIngredientsCard();
         setNutritionalFactsCard();
         setAllergyInformationCard();
@@ -228,6 +223,18 @@ public class MenuItemActivity extends ActionBarActivity {
     }
 
     /**
+     * Sets the menu item title.
+     */
+    private void setMenuItemTitle() {
+
+        TextView menuItemTitle = (TextView) findViewById(R.id.menu_item_title);
+
+        int titlePath = getStringIdentifier(this, "name_" + getRestaurantDataPath());
+
+        menuItemTitle.setText(getString(titlePath));
+    }
+
+    /**
      * Sets the ingredients card.
      */
     private void setIngredientsCard() {
@@ -264,7 +271,7 @@ public class MenuItemActivity extends ActionBarActivity {
     }
 
     /**
-     * Sets the allergy information card. TODO add argument that takes the text content
+     * Sets the allergy information card.
      */
     private void setAllergyInformationCard() {
 
@@ -276,8 +283,9 @@ public class MenuItemActivity extends ActionBarActivity {
 
         allergyInformationTitle.setText(R.string.allergy_info_title);
 
-        // TODO use the argument to set the content text
-        allergyInformationContent.setText("Insert content here");
+        int allergyInfoPath = getStringIdentifier(this, "allergy_" + getRestaurantDataPath());
+
+        allergyInformationContent.setText(getString(allergyInfoPath));
     }
 
     /**

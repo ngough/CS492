@@ -1,8 +1,10 @@
 package school.cs492;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,22 +13,37 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import android.util.SparseBooleanArray;
 
+/**
+ * @author lingxi
+ *         <p/>
+ *         Edited by fiorfe01
+ */
 public class SelectCompare extends ActionBarActivity {
 
     private ArrayList<String> scannedQRs;
-    ArrayAdapter<String> adapter;
-
+    private ArrayAdapter<String> adapter;
     private ListView scannedList;
     private Button compBtn;
 
+    /**
+     * Gets the resource string identifier.
+     *
+     * @param context
+     * @param name
+     * @return string identifier for resource
+     */
+    public static int getStringIdentifier(Context context, String name) {
+
+        return context.getResources().getIdentifier(name, "string", context.getPackageName());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_select_compare);
-        String[] food_source_1 = {"Stired Fried Chicked and Rice", "Bacon", "Lentil bean soup", "Tiramisu", "Fish and Chips"};
-        String[] food_source_2 = {"BLT", "Spaghetti and Meatballs", "Hamburger and Fries", "Dumplings", "Buffalo Chicken Wings"};
 
         int callingActivity = getIntent().getIntExtra("CALLER", 0);
         switch (callingActivity) {
@@ -39,49 +56,11 @@ public class SelectCompare extends ActionBarActivity {
                 scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_LIST");
                 break;
         }
-        // Get the number of items selected.
-        int numOfItem = scannedQRs.size();
-        String[] foods = new String[numOfItem];
 
-        // Loop through the ArrayList and figure out which items were scanned.
-        for (int i = 0; i < numOfItem; i++) {
-
-            if (scannedQRs.get(i).contains("restaurant1")) {
-                if (scannedQRs.get(i).contains("dish1")) {
-                    foods[i] = food_source_1[0];
-                } else if (scannedQRs.get(i).contains("dish2")) {
-                    foods[i] = food_source_1[1];
-                } else if (scannedQRs.get(i).contains("dish3")) {
-                    foods[i] = food_source_1[2];
-                } else if (scannedQRs.get(i).contains("dish4")) {
-                    foods[i] = food_source_1[3];
-                } else if (scannedQRs.get(i).contains("dish5")) {
-                    foods[i] = food_source_1[4];
-                }
-            } else {
-                if (scannedQRs.get(i).contains("dish1")) {
-                    foods[i] = food_source_2[0];
-                } else if (scannedQRs.get(i).contains("dish2")) {
-                    foods[i] = food_source_2[1];
-                } else if (scannedQRs.get(i).contains("dish3")) {
-                    foods[i] = food_source_2[2];
-                } else if (scannedQRs.get(i).contains("dish4")) {
-                    foods[i] = food_source_2[3];
-                } else if (scannedQRs.get(i).contains("dish5")) {
-                    foods[i] = food_source_2[4];
-                }
-            }
-        }
-
-        // Now we have the selected items. We populate the list.
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice, foods);
-        scannedList=(ListView)findViewById(R.id.list);
-        scannedList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        scannedList.setAdapter(adapter);
+        setMenuItemList();
 
         // Find Button and assign listener. Wrap up the selected items.
-        compBtn = (Button) findViewById(R.id.CompBtn);
+        compBtn = (Button) findViewById(R.id.SelectCompButton);
         compBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 CompBtnHandler((Button) v);
@@ -89,7 +68,48 @@ public class SelectCompare extends ActionBarActivity {
         });
     }
 
-    public void CompBtnHandler(Button btn){
+    /**
+     * Sets the Menu Item List.
+     */
+    private void setMenuItemList() {
+
+        // Get the number of
+        int numOfItem = scannedQRs.size();
+
+        String[] foods = new String[numOfItem];
+
+        // Loop through the ArrayList and figure out which items were scanned.
+        for (int i = 0; i < numOfItem; i++) {
+
+            int titlePath = getStringIdentifier(this, "name_" + getRestaurantDataPath(scannedQRs.get(i)));
+
+            foods[i] = getString(titlePath);
+        }
+
+        // Now we have the selected items. We populate the list.
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_multiple_choice, foods);
+        scannedList = (ListView) findViewById(R.id.selected_list);
+        scannedList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        scannedList.setAdapter(adapter);
+    }
+
+    /**
+     * Gets the restaurant data path used to get the data from resource.
+     *
+     * @return restaurant + "_" + dish
+     */
+    private String getRestaurantDataPath(String picPath) {
+
+        String restaurant = picPath.substring(23, 34);
+
+        String dish = picPath.substring(35, 40);
+
+        return restaurant + "_" + dish;
+    }
+
+
+    public void CompBtnHandler(Button btn) {
 
         SparseBooleanArray checked = scannedList.getCheckedItemPositions();
         ArrayList<String> selectedItems = new ArrayList<String>();
@@ -108,18 +128,16 @@ public class SelectCompare extends ActionBarActivity {
             outputStrArr[i] = selectedItems.get(i);
         }
 
-        Intent intent = new Intent(this,CompareActivity.class);
+        Intent intent = new Intent(this, CompareActivity.class);
 
         Bundle b = new Bundle();
-        b.putStringArray("SELECTED_ITEMS",outputStrArr);
+        b.putStringArray("SELECTED_ITEMS", outputStrArr);
 
         intent.putExtras(b);
 
         startActivity(intent);
 
     }
-
-
 
 
     @Override

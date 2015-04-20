@@ -2,30 +2,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    tools:context="school.cs492.SavedMenuItemsList"
-    android:orientation="vertical">
+    android:background="@color/background_grey"
+    android:orientation="vertical"
+    tools:context="school.cs492.SavedMenuItemsList">
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_weight="6" />
+        android:layout_weight="6"
+        android:divider="@null" />
 
     <Button
-        android:layout_marginTop="15dp"
+        android:id="@+id/CompButton"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Compare Items"
-        android:id="@+id/CompBtn"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_weight="0.5" />
-
-
+        android:layout_margin="@dimen/custom_button_margin"
+        android:background="@drawable/button_selector"
+        android:padding="@dimen/custom_button_padding"
+        android:text="@string/compare"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/custom_button_textSize"
+        android:textStyle="bold" />
 </LinearLayout>

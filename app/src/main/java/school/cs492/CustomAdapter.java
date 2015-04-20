@@ -20,9 +20,10 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
     private ArrayList<String> scannedQrs;
 
+    public CustomAdapter(Context context, String[] foods, ArrayList<String> scannedQrs) {
 
-    CustomAdapter(Context context, String[] foods,ArrayList<String> scannedQrs) {
         super(context, R.layout.menu_item_card_view, foods);
+
         this.scannedQrs = scannedQrs;
     }
 
@@ -39,8 +40,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
         buckyText.setText(singleFoodItem);
 
-        Picasso.with(getContext()).load(scannedQrs.get(position)).into(buckysImage);
-        //buckysImage.setImageResource(R.drawable.soup);
+        Picasso.with(getContext()).load(scannedQrs.get(position) + "pic1.jpg").into(buckysImage);
 
         return customView;
     }

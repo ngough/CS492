@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Restaurant Menu Reader</string>
 
     <!-- Toolbar strings. -->
@@ -14,6 +13,8 @@
     <string name="title_activity_camera_scan">CameraScanActivity</string>
     <string name="title_activity_restaurant_list">RestaurantListActivity</string>
     <string name="title_activity_menu_item">MenuItemActivity</string>
+    <string name="title_activity_select_compare">SelectCompare</string>
+    <string name="title_activity_compare">CompareActivity</string>
 
     <!-- Main Menu strings. -->
     <string name="scan_menu_items">Scan New Menu Item</string>
@@ -21,7 +22,8 @@
     <string name="change_restaurant">Change Restaurant</string>
 
     <!-- Camera Scan strings. -->
-    <string name="ok_title">OK</string>
+    <string name="ok_title">Ok</string>
+    <string name="scan_another_item">Scan Another Item</string>
 
     <!-- Menu Item headers strings. -->
     <string name="ingredients_title">Ingredients</string>
@@ -29,9 +31,9 @@
     <string name="allergy_info_title">Allergy Information</string>
 
     <!-- Menu Item names strings. -->
-    <string name="name_restaurant1_dish1">Stired Fried Chicked and Rice</string>
+    <string name="name_restaurant1_dish1">Lasagna</string>
     <string name="name_restaurant1_dish2">Bacon</string>
-    <string name="name_restaurant1_dish3">Lentil bean soup</string>
+    <string name="name_restaurant1_dish3">Lentil Bean Soup</string>
     <string name="name_restaurant1_dish4">Tiramisu</string>
     <string name="name_restaurant1_dish5">Fish and Chips</string>
     <string name="name_restaurant2_dish1">BLT</string>
@@ -63,9 +65,21 @@
     <string name="nutrition_restaurant2_dish3">Calories: 500\n\nFat: 12g\n\nCholesterol: 20mg\n\nSodium: 150mg\n\nCarbohydrates: 29g\n\nProtein: 13g</string>
     <string name="nutrition_restaurant2_dish4">Calories: 40\n\nFat: 2g\n\nCholesterol: 17mg\n\nSodium: 120mg\n\nCarbohydrates: 3g\n\nProtein: 4g</string>
     <string name="nutrition_restaurant2_dish5">Calories: 180\n\nFat: 11g\n\nCholesterol: 75mg\n\nSodium: 1230mg\n\nCarbohydrates: 4g\n\nProtein: 14g</string>
-    <string name="title_activity_select_compare">SelectCompare</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <!-- Menu Item allergy information strings. -->
+    <string name="allergy_restaurant1_dish1">Contains gluten</string>
+    <string name="allergy_restaurant1_dish2">Gluten free</string>
+    <string name="allergy_restaurant1_dish3">Vegetarian</string>
+    <string name="allergy_restaurant1_dish4">Contains raw eggs</string>
+    <string name="allergy_restaurant1_dish5">Contains gluten</string>
+    <string name="allergy_restaurant2_dish1">Contains gluten</string>
+    <string name="allergy_restaurant2_dish2">Contains gluten</string>
+    <string name="allergy_restaurant2_dish3">Contains gluten</string>
+    <string name="allergy_restaurant2_dish4">Contains gluten</string>
+    <string name="allergy_restaurant2_dish5">Contains gluten</string>
+
+    <!-- Saved Menu List strings. -->
+    <string name="compare">Compare</string>
 
     <string-array name="nutrition_array">
         <item>\n\nStired Fried Chicked and Rice\n\nCalories: 400\n\nFat: 22g\n\nCholesterol: 0g\n\nSodium: 750mg\n\nCarbohydrates: 27g\n\nProtein: 25g</item>
@@ -79,8 +93,4 @@
         <item>\n\nDumplings\n\nCalories: 40\n\nFat: 2g\n\nCholesterol: 17mg\n\nSodium: 120mg\n\nCarbohydrates: 3g\n\nProtein: 4g</item>
         <item>\n\nBuffalo Chicken Wings\n\nCalories: 180\n\nFat: 11g\n\nCholesterol: 75mg\n\nSodium: 1230mg\n\nCarbohydrates: 4g\n\nProtein: 14g</item>
     </string-array>
-    <!--"Stir fried chicken and rice", "Bacon", "Lentil bean soup", "Tiramisu", "Fish & Chips"-->
-    <!--"BLT", "Spaghetti & meatball", "Hamburger & Fries", "Dumpling", "Buffalo Chicken Wings"-->
-    <string name="title_activity_compare">CompareActivity</string>
-
 </resources>

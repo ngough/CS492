@@ -25,8 +25,8 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
     protected Location myLocation;
     protected String myLatitudeText;
     protected String myLongitudeText;
-    private IntentLauncher launcher;
     String restaurant = "";
+    private IntentLauncher launcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +83,8 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
             myLongitudeText = "Location unreadable";
         } //End else.
 
-        if(latitude != 0.0 && longitude != 0.0) {
-            if(longitude < -85.110000) {
+        if (latitude != 0.0 && longitude != 0.0) {
+            if (longitude < -85.110000) {
                 restaurant = "Welcome to Kettler Kitchen";
             } //End if.
             else {

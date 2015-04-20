@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 
 public class RestaurantListActivity extends ActionBarActivity {
@@ -54,10 +55,10 @@ public class RestaurantListActivity extends ActionBarActivity {
         if (id == R.id.opt_scan_new_item) {
             return true;
         }
-        if(id == 0) {
+        if (id == 0) {
             restaurantName = "CS Cafe";
         } //End if.
-        else if(id == 1) {
+        else if (id == 1) {
             restaurantName = "Kettler Kitchen";
         } //End else if.
         else {

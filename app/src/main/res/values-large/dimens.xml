@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Splash activity. -->
     <dimen name="searching_location_textSize">22sp</dimen>
@@ -24,4 +25,9 @@
     <dimen name="card_padding">10dp</dimen>
     <dimen name="card_title_textSize">20sp</dimen>
     <dimen name="card_content_textSize">15sp</dimen>
+
+    <!-- Saved Menu Items activity. -->
+    <dimen name="menu_item_icon_width">150dp</dimen>
+    <dimen name="menu_item_icon_height">100dp</dimen>
+    <dimen name="menu_item_icon_title_textSize">25sp</dimen>
 </resources>
