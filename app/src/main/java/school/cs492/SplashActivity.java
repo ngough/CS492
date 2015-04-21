@@ -120,11 +120,18 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
                 Log.e("Splash class", e.getMessage());
             }
 
-            //TODO Call the restaurant list activity if no gps coordinates available.
-            //start main activity...
-            Intent intent = new Intent(SplashActivity.this, MainMenuActivity.class);
-            intent.putExtra("restaurant", restaurant);
-            SplashActivity.this.startActivity(intent);
+            if (restaurant.equals("GPS unavailable")) {
+
+                Intent intent = new Intent(SplashActivity.this, RestaurantListActivity.class);
+                startActivity(intent);
+
+            } else {
+
+                Intent intent = new Intent(SplashActivity.this, MainMenuActivity.class);
+                intent.putExtra("restaurant", restaurant);
+                startActivity(intent);
+            }
+
             SplashActivity.this.finish();
         } //End run() method.
     } //End IntentLauncher class.

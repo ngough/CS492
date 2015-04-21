@@ -45,13 +45,13 @@ public class MainMenuActivity extends ActionBarActivity {
         } //End if.
         else {
 
-            if (restaurantTitle.equals("Welcome to CS Cafe")) {
+            if (restaurantName.equals("Welcome to CS Cafe")) {
 
                 // set the restaurant picture
                 ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
                 Picasso.with(this).load("http://virtualtour.ipfw.edu/images/photoGallery/sized/et/et7-vert.jpg").into(imageView);
 
-            } else if (restaurantTitle.equals("Welcome to Kettler Kitchen")) {
+            } else if (restaurantName.equals("Welcome to Kettler Kitchen")) {
 
                 // set the restaurant picture
                 ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
@@ -76,16 +76,6 @@ public class MainMenuActivity extends ActionBarActivity {
                 scannedItemBtnHandler((Button) v);
             }
         });
-
-//        if(getIntent()==null){
-//
-//        }else if(getIntent().getIntExtra("CALLER",0)==ActivityID.MenuItemActivity){
-//            scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_MAIN");
-//        }
-
-        // set the restaurant picture
-        ImageView imageView = (ImageView) findViewById(R.id.main_restaurant_image);
-        Picasso.with(this).load("http://virtualtour.ipfw.edu/images/photoGallery/sized/et/et7-vert.jpg").into(imageView);
     }
 
     /**

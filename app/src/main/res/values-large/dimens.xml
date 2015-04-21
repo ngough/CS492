@@ -13,6 +13,11 @@
     <dimen name="custom_button_padding">25dp</dimen>
     <dimen name="custom_button_textSize">25sp</dimen>
 
+    <!-- Restaurant List activity. -->
+    <dimen name="restaurant_icon_width">150dp</dimen>
+    <dimen name="restaurant_icon_height">500dp</dimen>
+    <dimen name="restaurant_icon_title_textSize">25sp</dimen>
+
     <!-- Menu Item activity. -->
     <dimen name="pager_height">300dp</dimen>
     <dimen name="pager_indicator_marginBottom">24dp</dimen>
