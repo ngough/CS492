@@ -35,21 +35,21 @@ public class CompareActivity extends ActionBarActivity {
                 nutritionLabels[i] = labels[0];
             } else if (resultArr[i].equals("Bacon")) {
                 nutritionLabels[i] = labels[1];
-            } else if (resultArr[i].equals("Buffalo Chicken Wings")) {
-                nutritionLabels[i] = labels[2];
             } else if (resultArr[i].equals("Lentil Bean Soup")) {
-                nutritionLabels[i] = labels[3];
+                nutritionLabels[i] = labels[2];
             } else if (resultArr[i].equals("Tiramisu")) {
-                nutritionLabels[i] = labels[4];
+                nutritionLabels[i] = labels[3];
             } else if (resultArr[i].equals("Fish and Chips")) {
-                nutritionLabels[i] = labels[5];
+                nutritionLabels[i] = labels[4];
             } else if (resultArr[i].equals("BLT")) {
-                nutritionLabels[i] = labels[6];
+                nutritionLabels[i] = labels[5];
             } else if (resultArr[i].equals("Spaghetti and Meatballs")) {
-                nutritionLabels[i] = labels[7];
+                nutritionLabels[i] = labels[6];
             } else if (resultArr[i].equals("Hamburger and Fries")) {
-                nutritionLabels[i] = labels[8];
+                nutritionLabels[i] = labels[7];
             } else if (resultArr[i].equals("Dumplings")) {
+                nutritionLabels[i] = labels[8];
+            } else if (resultArr[i].equals("Buffalo Chicken Wings")) {
                 nutritionLabels[i] = labels[9];
             }
         }

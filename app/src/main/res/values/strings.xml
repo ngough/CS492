@@ -82,7 +82,7 @@
     <string name="compare">Compare</string>
 
     <string-array name="nutrition_array">
-        <item>\n\nStired Fried Chicked and Rice\n\nCalories: 400\n\nFat: 22g\n\nCholesterol: 0g\n\nSodium: 750mg\n\nCarbohydrates: 27g\n\nProtein: 25g</item>
+        <item>\n\nLasagna\n\nCalories: 400\n\nFat: 22g\n\nCholesterol: 0g\n\nSodium: 750mg\n\nCarbohydrates: 27g\n\nProtein: 25g</item>
         <item>\n\nBacon\n\nCalories: 40\n\nFat: 4g\n\nCholesterol: 9mg\n\nSodium: 200mg\n\nCarbohydrates: 0g\n\nProtein: 3g</item>
         <item>\n\nLentil bean soup\n\nCalories: 180\n\nFat: 5g\n\nCholesterol: 0mg\n\nSodium: 625mg\n\nCarbohydrates: 27g\n\nProtein: 10g</item>
         <item>\n\nTiramisu\n\nCalories: 600\n\nFat: 46g\n\nCholesterol: 287mg\n\nSodium: 91mg\n\nCarbohydrates: 34g\n\nProtein: 8g</item>
