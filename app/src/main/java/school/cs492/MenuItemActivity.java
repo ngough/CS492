@@ -36,6 +36,7 @@ public class MenuItemActivity extends ActionBarActivity {
 
     private String picPath;
 
+    private String restaurantTitle;
     /**
      * Gets the resource string identifier.
      *
@@ -80,6 +81,9 @@ public class MenuItemActivity extends ActionBarActivity {
         setIngredientsCard();
         setNutritionalFactsCard();
         setAllergyInformationCard();
+
+        // Get restaurantTitle.
+        restaurantTitle = getIntent().getStringExtra("RESTAURANT_NAME");
     }
 
     @Override
@@ -105,6 +109,7 @@ public class MenuItemActivity extends ActionBarActivity {
                 // Toss around the array list around between MenuItemActivity and CameraScanActivity.
                 intent.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent.putExtra("CALLER", ActivityID.MenuItemActivity);
+                intent.putExtra("RESTAURANT_NAME",restaurantTitle);
                 startActivity(intent);
                 return true;
 
@@ -114,6 +119,7 @@ public class MenuItemActivity extends ActionBarActivity {
                 // Toss around the array list around between MenuItemActivity and CameraScanActivity.
                 intent.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent.putExtra("CALLER", ActivityID.MenuItemActivity);
+                intent.putExtra("RESTAURANT_NAME",restaurantTitle);
                 startActivity(intent);
                 return true;
 
@@ -122,6 +128,7 @@ public class MenuItemActivity extends ActionBarActivity {
                 intent_scanned = new Intent(this, SavedMenuItemsList.class);
                 intent_scanned.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent_scanned.putExtra("CALLER", ActivityID.MenuItemActivity);
+                intent_scanned.putExtra("RESTAURANT_NAME",restaurantTitle);
                 startActivity(intent_scanned);
                 return true;
 
@@ -130,6 +137,7 @@ public class MenuItemActivity extends ActionBarActivity {
                 intent_scanned = new Intent(this, SavedMenuItemsList.class);
                 intent_scanned.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent_scanned.putExtra("CALLER", ActivityID.MenuItemActivity);
+                intent_scanned.putExtra("RESTAURANT_NAME",restaurantTitle);
                 startActivity(intent_scanned);
                 return true;
 
@@ -138,6 +146,7 @@ public class MenuItemActivity extends ActionBarActivity {
                 Intent intent_main = new Intent(this, MainMenuActivity.class);
                 intent_main.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent_main.putExtra("CALLER", ActivityID.MenuItemActivity);
+                intent_main.putExtra("RESTAURANT_NAME",restaurantTitle);
                 startActivity(intent_main);
 
                 return true;
@@ -147,6 +156,7 @@ public class MenuItemActivity extends ActionBarActivity {
                 Intent intent_main2 = new Intent(this, MainMenuActivity.class);
                 intent_main2.putExtra("SCANNED_QR_ITEM", scannedQRs);
                 intent_main2.putExtra("CALLER", ActivityID.MenuItemActivity);
+                intent_main2.putExtra("RESTAURANT_NAME",restaurantTitle);
                 startActivity(intent_main2);
 
                 return true;

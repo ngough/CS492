@@ -133,7 +133,7 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
             } else {
 
                 Intent intent = new Intent(SplashActivity.this, MainMenuActivity.class);
-                intent.putExtra("restaurant", restaurant);
+                intent.putExtra("RESTAURANT_NAME", restaurant);
                 startActivity(intent);
             }
 
