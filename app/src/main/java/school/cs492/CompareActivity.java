@@ -14,12 +14,12 @@ public class CompareActivity extends ActionBarActivity {
 
     ArrayAdapter<String> adapter;
     private ArrayList<String> scannedQRs;
-
+    private String restaurantTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare);
-
+        restaurantTitle = getIntent().getStringExtra("RESTAURANT_NAME");
         String[] food_source_1 = {"Lasagna", "Bacon", "Lentil bean soup", "Tiramisu", "Fish and Chips"};
         String[] food_source_2 = {"BLT", "Spaghetti and Meatballs", "Hamburger and Fries", "Dumplings", "Buffalo Chicken Wings"};
 

@@ -39,7 +39,7 @@ public class MainMenuActivity extends ActionBarActivity {
         // set the restaurant title TODO pass the title of the specific restaurant
         restaurantTitle = (TextView) findViewById(R.id.restaurant_title);
         String restaurantName;
-        restaurantName = getIntent().getStringExtra("restaurant");
+        restaurantName = getIntent().getStringExtra("RESTAURANT_NAME");
         if (restaurantName == null || restaurantName == "") {
             restaurantTitle.setText("Name not received");
         } //End if.
@@ -89,6 +89,12 @@ public class MainMenuActivity extends ActionBarActivity {
         intent.putExtra("CALLER", ActivityID.MainMenuActivity);
 
         intent.putExtra("SCANNED_QR_MAIN", scannedQRs);
+        if(restaurantTitle.getText().equals("Welcome to CS Cafe")){
+            intent.putExtra("RESTAURANT_NAME","Welcome to CS Cafe");
+        }else{
+            intent.putExtra("RESTAURANT_NAME","Welcome to Kettler Kitchen");
+        }
+
         startActivityForResult(intent, SCAN_REQUEST_CODE);
     }
 
@@ -98,6 +104,11 @@ public class MainMenuActivity extends ActionBarActivity {
             scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_ITEM");
             Intent intent = new Intent(this, SavedMenuItemsList.class);
             intent.putExtra("CALLER", ActivityID.MainMenuActivity);
+            if(restaurantTitle.getText().equals("Welcome to CS Cafe")){
+                intent.putExtra("RESTAURANT_NAME","Welcome to CS Cafe");
+            }else{
+                intent.putExtra("RESTAURANT_NAME","Welcome to Kettler Kitchen");
+            }
             intent.putExtra("SCANNED_QR_MAIN", scannedQRs);
             startActivity(intent);
         } else if (scannedQRs.size() == 0) {

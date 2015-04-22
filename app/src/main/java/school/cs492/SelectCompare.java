@@ -25,7 +25,7 @@ public class SelectCompare extends ActionBarActivity {
     private ArrayAdapter<String> adapter;
     private ListView scannedList;
     private Button compBtn;
-
+    private String restaurantTitle;
     /**
      * Gets the resource string identifier.
      *
@@ -46,10 +46,12 @@ public class SelectCompare extends ActionBarActivity {
         setContentView(R.layout.activity_select_compare);
 
         int callingActivity = getIntent().getIntExtra("CALLER", 0);
+        restaurantTitle = getIntent().getStringExtra("RESTAURANT_NAME");
         switch (callingActivity) {
 
             case ActivityID.MainMenuActivity:
                 scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_MAIN");
+
                 break;
 
             case ActivityID.SavedMenuItemsList:

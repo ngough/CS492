@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class SavedMenuItemsList extends ActionBarActivity {
 
     private ArrayList<String> scannedQRs;
-
+    private String restaurantTitle;
     private ListView custListView;
 
     /**
@@ -38,7 +38,7 @@ public class SavedMenuItemsList extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        restaurantTitle = getIntent().getStringExtra("RESTAURANT_NAME");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_menu_items_list);
 
@@ -78,6 +78,7 @@ public class SavedMenuItemsList extends ActionBarActivity {
                         intent.putExtra("QR_RESULT", menuItemPath);
                         intent.putExtra("SCANNED_QR_LIST", scannedQRs);
                         intent.putExtra("CALLER", ActivityID.SavedMenuItemsList);
+                        intent.putExtra("RESTAURANT_NAME",restaurantTitle);
                         startActivity(intent);
                     }
                 }

@@ -62,7 +62,7 @@ public class RestaurantListActivity extends ActionBarActivity {
                         }
 
                         Intent intent_main = new Intent(RestaurantListActivity.this, MainMenuActivity.class);
-                        intent_main.putExtra("restaurant", restaurantName);
+                        intent_main.putExtra("RESTAURANT_NAME", restaurantName);
                         intent_main.putExtra("SCANNED_QR_MAIN", scannedQRs);
 
                         startActivity(intent_main);

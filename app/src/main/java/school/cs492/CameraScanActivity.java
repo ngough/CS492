@@ -35,6 +35,7 @@ public class CameraScanActivity extends Activity {
     TextView scanText;
     //    Button scanButton;
     Button OkButton;
+    Button rescanBtn;
     ImageScanner scanner;
     private String qrInfo = "";
     private Camera mCamera;
@@ -42,6 +43,8 @@ public class CameraScanActivity extends Activity {
     private Handler autoFocusHandler;
     private boolean barcodeScanned = false;
     private boolean previewing = true;
+    private String restaurantTitle;
+
     PreviewCallback previewCb = new PreviewCallback() {
 
         public void onPreviewFrame(byte[] data, Camera camera) {
@@ -96,6 +99,7 @@ public class CameraScanActivity extends Activity {
 
         } else {
             scannedQRs = getIntent().getExtras().getStringArrayList("SCANNED_QR_ITEM");
+            restaurantTitle = getIntent().getStringExtra("RESTAURANT_NAME");
         }
 
         setContentView(R.layout.activity_camera_scan);
@@ -113,23 +117,19 @@ public class CameraScanActivity extends Activity {
         mPreview = new CameraPreview(this, mCamera, previewCb, autoFocusCB);
         FrameLayout preview = (FrameLayout) findViewById(R.id.cameraPreview);
         preview.addView(mPreview);
-
-//        scanText = (TextView)findViewById(R.id.scanText);
-
-//        scanButton = (Button)findViewById(R.id.ScanButton);
-//
-//        scanButton.setOnClickListener(new OnClickListener() {
-//            public void onClick(View v) {
-//                if (barcodeScanned) {
-//                    barcodeScanned = false;
-//                    scanText.setText("Scanning...");
-//                    mCamera.setPreviewCallback(previewCb);
-//                    mCamera.startPreview();
-//                    previewing = true;
-//                    mCamera.autoFocus(autoFocusCB);
-//                }
-//            }
-//        });
+        rescanBtn = (Button) findViewById(R.id.ScanAnotherItemButton);
+        rescanBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (barcodeScanned) {
+                    barcodeScanned = false;
+                    mCamera.setPreviewCallback(previewCb);
+                    mCamera.startPreview();
+                    previewing = true;
+                    mCamera.autoFocus(autoFocusCB);
+                }
+            }
+        });
         OkButton = (Button) findViewById(R.id.OkButton);
 
         OkButton.setOnClickListener(new OnClickListener() {
@@ -148,17 +148,24 @@ public class CameraScanActivity extends Activity {
             case ActivityID.MainMenuActivity:
                 Intent intent_m = new Intent(this, MenuItemActivity.class);
                 scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_MAIN");
-                intent_m.putExtra("QR_RESULT", qrInfo);
+
+                    intent_m.putExtra("QR_RESULT", qrInfo);
+
+
                 intent_m.putExtra("SCANNED_QR_CAM", scannedQRs);
+                intent_m.putExtra("RESTAURANT_NAME",restaurantTitle);
                 intent_m.putExtra("CALLER", ActivityID.CameraScanActivity);
                 startActivity(intent_m);
                 break;
 
             case ActivityID.MenuItemActivity:
                 Intent intent_i = new Intent(this, MenuItemActivity.class);
-                intent_i.putExtra("QR_RESULT", qrInfo);
+
+                    intent_i.putExtra("QR_RESULT", qrInfo);
+
                 scannedQRs = getIntent().getStringArrayListExtra("SCANNED_QR_ITEM");
                 intent_i.putExtra("CALLER", ActivityID.CameraScanActivity);
+                intent_i.putExtra("RESTAURANT_NAME",restaurantTitle);
                 intent_i.putExtra("SCANNED_QR_CAM", scannedQRs);
                 startActivity(intent_i);
                 break;
@@ -195,4 +202,20 @@ public class CameraScanActivity extends Activity {
             autoFocusHandler.postDelayed(doAutoFocus, 1000);
         }
     };
+
+    public boolean contains(String newQr)
+    {
+        boolean scanned = false;
+        int num = scannedQRs.size();
+        for(int i=0;i<num;i++)
+        {
+            if(scannedQRs.get(i).equals(newQr))
+            {
+                scanned = true;
+                break;
+            }
+        }
+
+        return scanned;
+    }
 }
