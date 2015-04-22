@@ -3,18 +3,18 @@
     package="school.cs492">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -25,32 +25,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".RestaurantListActivity"
-            android:label="@string/title_activity_restaurant_list" />
+            android:label="@string/title_activity_restaurant_list"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu" />
+            android:label="@string/title_activity_main_menu"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".CameraScanActivity"
-            android:label="@string/title_activity_camera_scan" />
+            android:label="@string/title_activity_camera_scan"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".MenuItemActivity"
-            android:label="@string/title_activity_menu_item" />
+            android:label="@string/title_activity_menu_item"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".SavedMenuItemsList"
-            android:label="saved_activity" />
+            android:label="saved_activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".SelectCompare"
+            android:label="@string/title_activity_select_compare"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".CompareActivity"
+            android:label="@string/title_activity_compare"
+            android:screenOrientation="portrait"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <activity
-            android:name=".SelectCompare"
-            android:label="@string/title_activity_select_compare"></activity>
-        <activity
-            android:name=".CompareActivity"
-            android:label="@string/title_activity_compare"></activity>
     </application>
-
 </manifest>
