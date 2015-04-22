@@ -61,7 +61,7 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
     @Override
     protected void onStop() {
         super.onStop();
-        if (myGoogleApiClient.isConnected()) {
+        if(myGoogleApiClient.isConnected()) {
             myGoogleApiClient.disconnect();
         } //End if.
     } //End onStop() method.
@@ -72,7 +72,7 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
         double longitude = 0.0;
         myLocation = LocationServices.FusedLocationApi.getLastLocation(myGoogleApiClient);
 
-        if (myLocation != null) {
+        if(myLocation != null) {
             latitude = myLocation.getLatitude();
             longitude = myLocation.getLongitude();
             myLatitudeText = String.valueOf(myLocation.getLatitude());
@@ -83,17 +83,22 @@ public class SplashActivity extends Activity implements ConnectionCallbacks, OnC
             myLongitudeText = "Location unreadable";
         } //End else.
 
-        if (latitude != 0.0 && longitude != 0.0) {
-            if (longitude < -85.110000) {
-                restaurant = "Welcome to Kettler Kitchen";
+        if(latitude != 0.0 && longitude != 0.0) {
+            if((latitude > 41.114000 && latitude < 41.117000) && (longitude < -85.108000 && longitude > -85.113000)) {
+                if(longitude < -85.110000) {
+                    restaurant = "Welcome to Kettler Kitchen";
+                } //End if.
+                else {
+                    restaurant = "Welcome to CS Cafe";
+                } //End else.
             } //End if.
             else {
-                restaurant = "Welcome to CS Cafe";
+                restaurant = "GPS unavailable";
             } //End else.
         } //End if.
         else {
             restaurant = "GPS unavailable";
-        }
+        } //End else.
 
         Log.i(TAG, myLatitudeText);
         Log.i(TAG, myLongitudeText);
