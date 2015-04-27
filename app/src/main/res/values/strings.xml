@@ -31,16 +31,16 @@
     <string name="allergy_info_title">Allergy Information</string>
 
     <!-- Menu Item names strings. -->
-    <string name="name_restaurant1_dish1">Lasagna</string>
-    <string name="name_restaurant1_dish2">Bacon</string>
-    <string name="name_restaurant1_dish3">Lentil Bean Soup</string>
-    <string name="name_restaurant1_dish4">Tiramisu</string>
-    <string name="name_restaurant1_dish5">Fish and Chips</string>
-    <string name="name_restaurant2_dish1">BLT</string>
-    <string name="name_restaurant2_dish2">Spaghetti and Meatballs</string>
-    <string name="name_restaurant2_dish3">Hamburger and Fries</string>
-    <string name="name_restaurant2_dish4">Dumplings</string>
-    <string name="name_restaurant2_dish5">Buffalo Chicken Wings</string>
+    <string name="name_restaurant1_dish1">Lasagna - $9.99</string>
+    <string name="name_restaurant1_dish2">Bacon - $4.99</string>
+    <string name="name_restaurant1_dish3">Lentil Bean Soup - $9.99</string>
+    <string name="name_restaurant1_dish4">Tiramisu - $5.99</string>
+    <string name="name_restaurant1_dish5">Fish and Chips - $7.99</string>
+    <string name="name_restaurant2_dish1">BLT - $7.99</string>
+    <string name="name_restaurant2_dish2">Spaghetti and Meatballs - $9.99</string>
+    <string name="name_restaurant2_dish3">Hamburger and Fries - $8.99</string>
+    <string name="name_restaurant2_dish4">Dumplings - $9.99</string>
+    <string name="name_restaurant2_dish5">Buffalo Chicken Wings - $8.99</string>
 
     <!-- Menu Item ingredients strings. -->
     <string name="ingredients_restaurant1_dish1">Italian sausage\n\nGround beef\n\nOnion\n\nTomatoes\n\nRicotta cheese\n\nMozzarella cheese\n\nParmesan cheese</string>
